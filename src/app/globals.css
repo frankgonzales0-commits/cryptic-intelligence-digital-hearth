@@ -1,0 +1,1145 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand colors */
+  --brand-midnight-blue: #10243f;
+  --brand-compass-gold: #b8872f;
+  --brand-evergreen: #285143;
+  --brand-slate-gray: #5b6773;
+  --brand-parchment: #f5f0e6;
+
+  /* Semantic text colors */
+  --semantic-text-primary: #17212b;
+  --semantic-text-muted: #485563;
+  --semantic-text-inverse: #fffdf8;
+
+  /* Semantic surfaces */
+  --semantic-surface: #f5f0e6;
+  --semantic-surface-raised: #fffdf8;
+  --semantic-surface-muted: #e9e3d8;
+  --semantic-surface-strong: #10243f;
+
+  /* Borders and focus */
+  --semantic-border-subtle: #cec6b8;
+  --semantic-border-strong: #77828d;
+  --semantic-focus-light: #fffdf8;
+  --semantic-focus-dark: #10243f;
+  --semantic-focus-offset: #fffdf8;
+
+  /* Typography */
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-size-body: 1rem;
+  --line-height-body: 1.7;
+  --measure-reading: 68ch;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Shape */
+  --radius-control: 0.5rem;
+  --radius-panel: 0.875rem;
+  --radius-round: 999px;
+
+  /* Elevation */
+  --shadow-soft: 0 10px 30px rgb(16 36 63 / 0.08);
+  --shadow-raised: 0 18px 48px rgb(16 36 63 / 0.16);
+
+  /* Motion */
+  --motion-duration-fast: 140ms;
+  --motion-duration-standard: 240ms;
+  --motion-duration-slow: 420ms;
+  --motion-ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-gentle: cubic-bezier(0.33, 1, 0.68, 1);
+
+  /* Arrival image hook: replace `none` with an approved local image later. */
+  --arrival-image: none;
+}
+
+@theme inline {
+  --color-midnight: var(--brand-midnight-blue);
+  --color-compass-gold: var(--brand-compass-gold);
+  --color-evergreen: var(--brand-evergreen);
+  --color-slate: var(--brand-slate-gray);
+  --color-parchment: var(--brand-parchment);
+  --color-text-primary: var(--semantic-text-primary);
+  --color-text-muted: var(--semantic-text-muted);
+  --color-text-inverse: var(--semantic-text-inverse);
+  --color-surface: var(--semantic-surface);
+  --color-surface-raised: var(--semantic-surface-raised);
+  --color-surface-muted: var(--semantic-surface-muted);
+  --color-surface-strong: var(--semantic-surface-strong);
+  --color-border-subtle: var(--semantic-border-subtle);
+  --color-border-strong: var(--semantic-border-strong);
+  --color-focus-ring: var(--semantic-focus-dark);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--semantic-surface);
+  color: var(--semantic-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--brand-compass-gold);
+  color: var(--brand-midnight-blue);
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--semantic-focus-light);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 8px var(--semantic-focus-dark);
+}
+
+#main-content:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.arrival,
+.why-we-exist,
+.expedition,
+.first-guide,
+.library-home,
+.library-page,
+.begin-expedition {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.arrival-atmosphere,
+.why-we-exist-atmosphere,
+.expedition-atmosphere,
+.first-guide-atmosphere,
+.library-home-atmosphere,
+.begin-expedition-atmosphere {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.arrival-atmosphere > span,
+.why-we-exist-atmosphere > span,
+.expedition-atmosphere > span,
+.first-guide-atmosphere > span,
+.library-home-atmosphere > span,
+.begin-expedition-atmosphere > span {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.home-section-heading {
+  max-width: 10ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.75rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.home-section-heading-wide {
+  max-width: 11ch;
+}
+
+.home-section-heading-final {
+  max-width: none;
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.arrival {
+  color: var(--brand-parchment);
+  background-color: var(--brand-midnight-blue);
+  background-image:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--brand-midnight-blue) 98%, transparent) 0%,
+      color-mix(in srgb, var(--brand-midnight-blue) 90%, transparent) 46%,
+      color-mix(in srgb, var(--brand-evergreen) 70%, transparent) 100%
+    ),
+    var(--arrival-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.arrival::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(
+      180deg,
+      transparent 58%,
+      color-mix(in srgb, var(--brand-midnight-blue) 46%, transparent) 100%
+    ),
+    repeating-linear-gradient(
+      115deg,
+      transparent 0,
+      transparent 8px,
+      color-mix(in srgb, var(--brand-parchment) 2%, transparent) 9px
+    );
+}
+
+.arrival-glow {
+  top: -12%;
+  right: -15%;
+  width: min(72vw, 64rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 52%, transparent) 0%,
+    color-mix(in srgb, var(--brand-compass-gold) 18%, transparent) 34%,
+    transparent 70%
+  );
+  filter: blur(2px);
+}
+
+.arrival-threshold {
+  top: 8%;
+  right: 6%;
+  bottom: 0;
+  width: min(38vw, 34rem);
+  border-top: 1px solid
+    color-mix(in srgb, var(--brand-compass-gold) 44%, transparent);
+  border-right: 1px solid
+    color-mix(in srgb, var(--brand-compass-gold) 28%, transparent);
+  border-left: 1px solid
+    color-mix(in srgb, var(--brand-compass-gold) 28%, transparent);
+  border-radius: 50% 50% 0 0;
+  opacity: 0.72;
+  box-shadow: inset 0 0 4rem
+    color-mix(in srgb, var(--brand-compass-gold) 8%, transparent);
+}
+
+.arrival-ridge {
+  right: -8%;
+  bottom: -1px;
+  left: 26%;
+  transform-origin: bottom center;
+}
+
+.arrival-ridge-far {
+  height: 46%;
+  background: color-mix(
+    in srgb,
+    var(--brand-slate-gray) 54%,
+    var(--brand-midnight-blue)
+  );
+  clip-path: polygon(
+    0 100%,
+    0 67%,
+    9% 57%,
+    18% 63%,
+    30% 39%,
+    40% 54%,
+    51% 31%,
+    62% 49%,
+    72% 24%,
+    85% 50%,
+    100% 37%,
+    100% 100%
+  );
+  opacity: 0.56;
+}
+
+.arrival-ridge-middle {
+  height: 38%;
+  background: color-mix(
+    in srgb,
+    var(--brand-evergreen) 78%,
+    var(--brand-midnight-blue)
+  );
+  clip-path: polygon(
+    0 100%,
+    0 70%,
+    13% 54%,
+    23% 64%,
+    38% 34%,
+    49% 62%,
+    63% 41%,
+    73% 57%,
+    87% 33%,
+    100% 55%,
+    100% 100%
+  );
+  opacity: 0.76;
+}
+
+.arrival-ridge-near {
+  height: 27%;
+  background: color-mix(
+    in srgb,
+    var(--brand-evergreen) 42%,
+    var(--brand-midnight-blue)
+  );
+  clip-path: polygon(
+    0 100%,
+    0 66%,
+    16% 45%,
+    29% 60%,
+    44% 28%,
+    59% 55%,
+    73% 36%,
+    88% 62%,
+    100% 47%,
+    100% 100%
+  );
+}
+
+.arrival-mist {
+  right: -12%;
+  bottom: 17%;
+  width: 78%;
+  height: 17%;
+  border-radius: var(--radius-round);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--brand-parchment) 13%, transparent),
+    transparent
+  );
+  filter: blur(18px);
+  opacity: 0.58;
+  animation: arrival-mist-drift 18s var(--motion-ease-gentle) infinite alternate;
+}
+
+.arrival-copy {
+  animation: arrival-copy-in 720ms var(--motion-ease-standard) both;
+}
+
+@keyframes arrival-copy-in {
+  from {
+    transform: translateY(var(--space-3));
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes arrival-mist-drift {
+  from {
+    transform: translate3d(-2%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(3%, -4%, 0);
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .arrival-ridge {
+    right: -28%;
+    left: 18%;
+    opacity: 0.52;
+  }
+
+  .arrival-threshold {
+    top: 12%;
+    right: -26%;
+    width: 78vw;
+    opacity: 0.44;
+  }
+
+  .arrival-glow {
+    top: 18%;
+    right: -40%;
+    width: 100vw;
+  }
+}
+
+.why-we-exist {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(
+          in srgb,
+          var(--brand-midnight-blue) 42%,
+          var(--brand-parchment)
+        )
+        0,
+      color-mix(
+          in srgb,
+          var(--brand-midnight-blue) 10%,
+          var(--brand-parchment)
+        )
+        7rem,
+      var(--brand-parchment) 15rem,
+      color-mix(
+          in srgb,
+          var(--brand-compass-gold) 7%,
+          var(--brand-parchment)
+        )
+        100%
+    );
+}
+
+.why-we-exist::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: repeating-linear-gradient(
+    112deg,
+    transparent 0,
+    transparent 11px,
+    color-mix(in srgb, var(--brand-midnight-blue) 1.7%, transparent) 12px
+  );
+}
+
+.why-we-exist-light {
+  top: -16rem;
+  right: -12rem;
+  width: min(72vw, 58rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 24%, transparent) 0%,
+    color-mix(in srgb, var(--brand-compass-gold) 8%, transparent) 38%,
+    transparent 70%
+  );
+}
+
+.why-we-exist-horizon {
+  top: -1px;
+  right: -6%;
+  left: 38%;
+  height: 8rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-evergreen) 30%,
+    var(--brand-midnight-blue)
+  );
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 56%,
+    84% 42%,
+    72% 66%,
+    58% 47%,
+    42% 73%,
+    27% 50%,
+    12% 68%,
+    0 52%
+  );
+  opacity: 0.24;
+}
+
+.why-we-exist-closing,
+.expedition-refrain {
+  position: relative;
+  padding-left: var(--space-6);
+}
+
+.why-we-exist-closing::before,
+.expedition-refrain::before {
+  position: absolute;
+  top: 0.15em;
+  bottom: 0.15em;
+  left: 0;
+  width: 3px;
+  border-radius: var(--radius-round);
+  background: var(--brand-compass-gold);
+  content: "";
+}
+
+.expedition-refrain::before {
+  top: 0.12em;
+  bottom: 0.12em;
+}
+
+@media (max-width: 47.999rem) {
+  .why-we-exist {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(
+            in srgb,
+            var(--brand-midnight-blue) 34%,
+            var(--brand-parchment)
+          )
+          0,
+        var(--brand-parchment) 9rem,
+        color-mix(
+            in srgb,
+            var(--brand-compass-gold) 7%,
+            var(--brand-parchment)
+          )
+          100%
+      );
+  }
+
+  .why-we-exist-horizon {
+    right: -38%;
+    left: 16%;
+    opacity: 0.18;
+  }
+}
+
+.expedition {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(
+          in srgb,
+          var(--brand-compass-gold) 7%,
+          var(--brand-parchment)
+        )
+        0,
+      var(--semantic-surface-raised) 12rem,
+      color-mix(
+          in srgb,
+          var(--brand-evergreen) 4%,
+          var(--semantic-surface-raised)
+        )
+        100%
+    );
+}
+
+.expedition-contours {
+  top: 10%;
+  right: -18rem;
+  width: min(72vw, 64rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: repeating-radial-gradient(
+    ellipse at center,
+    transparent 0,
+    transparent 2.25rem,
+    color-mix(in srgb, var(--brand-evergreen) 11%, transparent) 2.3rem,
+    transparent 2.36rem
+  );
+  opacity: 0.72;
+  transform: rotate(-8deg) scaleY(0.72);
+}
+
+.expedition-daylight {
+  top: -18rem;
+  left: -14rem;
+  width: min(64vw, 54rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 16%, transparent) 0%,
+    transparent 68%
+  );
+}
+
+.expedition-paths {
+  isolation: isolate;
+  position: relative;
+  display: grid;
+  gap: var(--space-12);
+  list-style: none;
+}
+
+.expedition-paths::before {
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.35rem;
+  z-index: -1;
+  border-left: 1px dashed
+    color-mix(in srgb, var(--brand-evergreen) 48%, transparent);
+  content: "";
+}
+
+.expedition-path {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+  padding-block: var(--space-4) var(--space-8);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--brand-slate-gray) 28%, transparent);
+}
+
+.expedition-path-marker {
+  display: inline-flex;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--brand-compass-gold);
+  border-radius: var(--radius-round);
+  background: var(--semantic-surface-raised);
+  color: var(--brand-evergreen);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 0 0.35rem var(--semantic-surface-raised);
+}
+
+.expedition-path-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  list-style: none;
+  color: var(--semantic-text-muted);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.expedition-path-words li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.expedition-path-words li:not(:last-child)::after {
+  width: 0.25rem;
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: var(--brand-compass-gold);
+  content: "";
+}
+
+@media (min-width: 48rem) {
+  .expedition-paths {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-16) var(--space-24);
+    padding: var(--space-8);
+  }
+
+  .expedition-paths::before {
+    inset: 2rem 5% 3rem;
+    border: 1px dashed
+      color-mix(in srgb, var(--brand-evergreen) 36%, transparent);
+    border-radius: 48% 52% 46% 54%;
+    transform: rotate(-3deg);
+  }
+
+  .expedition-path:nth-child(even) {
+    transform: translateY(var(--space-12));
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .expedition-contours {
+    top: 32%;
+    right: -28rem;
+    width: 46rem;
+    opacity: 0.5;
+  }
+}
+
+.first-guide {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(
+          in srgb,
+          var(--brand-evergreen) 82%,
+          var(--brand-midnight-blue)
+        )
+        0,
+      var(--brand-midnight-blue) 100%
+    );
+}
+
+.first-guide-morning-light {
+  top: -22rem;
+  right: -20rem;
+  width: min(78vw, 68rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 24%, transparent) 0,
+    transparent 67%
+  );
+}
+
+.first-guide-hearth-glow {
+  bottom: -20rem;
+  left: -16rem;
+  width: min(72vw, 58rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 14%, transparent) 0,
+    transparent 70%
+  );
+}
+
+.first-guide-ridge {
+  right: -8%;
+  bottom: -1px;
+  left: 30%;
+  height: 18%;
+  background: color-mix(
+    in srgb,
+    var(--brand-evergreen) 30%,
+    var(--brand-midnight-blue)
+  );
+  clip-path: polygon(
+    0 100%,
+    0 66%,
+    18% 42%,
+    37% 68%,
+    56% 30%,
+    73% 58%,
+    88% 38%,
+    100% 56%,
+    100% 100%
+  );
+  opacity: 0.36;
+}
+
+.guide-portrait {
+  width: min(100%, 34rem);
+  margin-inline: auto;
+}
+
+.guide-portrait-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid
+    color-mix(in srgb, var(--brand-compass-gold) 42%, transparent);
+  border-radius: var(--radius-panel);
+  background: var(--brand-evergreen);
+  box-shadow: var(--shadow-soft);
+}
+
+.guide-portrait-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-6);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--brand-compass-gold) 13%, transparent),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--brand-slate-gray) 30%, var(--brand-evergreen)),
+      color-mix(
+        in srgb,
+        var(--brand-midnight-blue) 76%,
+        var(--brand-evergreen)
+      )
+    );
+}
+
+.guide-portrait-rings {
+  position: absolute;
+  top: 8%;
+  right: -34%;
+  width: 104%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: repeating-radial-gradient(
+    ellipse at center,
+    transparent 0,
+    transparent 1.7rem,
+    color-mix(in srgb, var(--brand-compass-gold) 17%, transparent) 1.74rem,
+    transparent 1.8rem
+  );
+  transform: rotate(-12deg) scaleY(0.76);
+}
+
+.guide-portrait-placeholder-label {
+  position: relative;
+  max-width: 16rem;
+  border-left: 2px solid var(--brand-compass-gold);
+  padding-left: var(--space-4);
+  color: var(--brand-parchment);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.guide-portrait-caption {
+  margin-top: var(--space-6);
+  padding-left: var(--space-1);
+}
+
+@media (max-width: 47.999rem) {
+  .first-guide-morning-light {
+    top: -12rem;
+    right: -20rem;
+    width: 42rem;
+  }
+
+  .guide-portrait {
+    max-width: 27rem;
+  }
+}
+
+.library-home,
+.library-page {
+  background: var(--brand-parchment);
+}
+
+.library-home {
+  background:
+    linear-gradient(
+      180deg,
+      var(--brand-midnight-blue) 0,
+      color-mix(
+          in srgb,
+          var(--brand-evergreen) 58%,
+          var(--brand-parchment)
+        )
+        2rem,
+      var(--brand-parchment) 5rem
+    );
+}
+
+.library-home-light {
+  top: 5rem;
+  right: -18rem;
+  width: min(70vw, 60rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 17%, transparent) 0,
+    transparent 69%
+  );
+}
+
+.library-home-grain {
+  inset: 0;
+  background: repeating-linear-gradient(
+    92deg,
+    transparent 0,
+    transparent 7rem,
+    color-mix(in srgb, var(--brand-slate-gray) 3%, transparent) 7.05rem,
+    transparent 7.1rem
+  );
+}
+
+.publication-shelf {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-12) var(--space-6);
+  align-items: end;
+  list-style: none;
+}
+
+.publication-card {
+  width: min(100%, 15rem);
+  margin-inline: auto;
+}
+
+.publication-cover {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  border: 1px solid
+    color-mix(in srgb, var(--brand-midnight-blue) 24%, transparent);
+  border-radius: 0 var(--radius-control) var(--radius-control) 0;
+  box-shadow:
+    -0.5rem 0 0
+      color-mix(in srgb, var(--brand-midnight-blue) 17%, transparent),
+    var(--shadow-soft);
+}
+
+.publication-cover::before {
+  position: absolute;
+  z-index: 2;
+  inset-block: 0;
+  left: 0;
+  width: 0.7rem;
+  border-right: 1px solid
+    color-mix(in srgb, var(--brand-compass-gold) 38%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--brand-midnight-blue) 32%,
+    transparent
+  );
+  content: "";
+}
+
+.publication-cover-midnight {
+  background: var(--brand-midnight-blue);
+  color: var(--brand-parchment);
+}
+
+.publication-cover-evergreen {
+  background: var(--brand-evergreen);
+  color: var(--brand-parchment);
+}
+
+.publication-cover-slate {
+  background: var(--brand-slate-gray);
+  color: var(--brand-parchment);
+}
+
+.publication-cover-parchment {
+  background: color-mix(
+    in srgb,
+    var(--brand-compass-gold) 16%,
+    var(--brand-parchment)
+  );
+  color: var(--brand-midnight-blue);
+}
+
+.publication-cover-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-8) var(--space-6) var(--space-6) var(--space-8);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, currentColor 7%, transparent),
+      transparent 48%
+    );
+}
+
+.publication-cover-rule {
+  width: 2.5rem;
+  height: 2px;
+  background: var(--brand-compass-gold);
+}
+
+.publication-cover-title {
+  max-width: 9ch;
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: clamp(1.15rem, 2.3vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.publication-cover-mark {
+  width: 1.25rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--brand-compass-gold);
+  border-radius: var(--radius-round);
+}
+
+.library-preparation {
+  border-left: 3px solid var(--brand-compass-gold);
+  padding-left: var(--space-6);
+}
+
+@media (min-width: 24rem) {
+  .publication-shelf {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .publication-card {
+    width: min(100%, 18rem);
+  }
+}
+
+@media (min-width: 64rem) {
+  .publication-shelf {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+
+  .publication-shelf > li:nth-child(even) {
+    transform: translateY(var(--space-6));
+  }
+}
+
+.begin-expedition {
+  background:
+    linear-gradient(
+      180deg,
+      var(--brand-parchment) 0,
+      color-mix(
+          in srgb,
+          var(--brand-slate-gray) 10%,
+          var(--semantic-surface-raised)
+        )
+        64%,
+      color-mix(
+          in srgb,
+          var(--brand-evergreen) 13%,
+          var(--brand-parchment)
+        )
+        100%
+    );
+}
+
+.begin-expedition-sun {
+  top: -18rem;
+  right: -15rem;
+  width: min(72vw, 64rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 18%, transparent) 0,
+    transparent 69%
+  );
+}
+
+.begin-expedition-bearing {
+  top: 22%;
+  left: 50%;
+  width: min(88vw, 72rem);
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--brand-evergreen) 26%, transparent) 0 0.4rem,
+    transparent 0.4rem 1rem
+  );
+  opacity: 0.65;
+  transform: translateX(-50%) rotate(-3deg);
+  transform-origin: center;
+}
+
+.begin-expedition-bearing::after {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  width: 0.65rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--brand-compass-gold);
+  border-radius: var(--radius-round);
+  background: var(--brand-parchment);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.begin-expedition-bearing::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0.65rem;
+  aspect-ratio: 1;
+  border-top: 1px solid var(--brand-evergreen);
+  border-right: 1px solid var(--brand-evergreen);
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.begin-expedition-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.begin-expedition-ridge-far {
+  height: 13rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-slate-gray) 42%,
+    var(--brand-evergreen)
+  );
+  clip-path: polygon(
+    0 100%,
+    0 72%,
+    12% 58%,
+    23% 68%,
+    36% 45%,
+    48% 66%,
+    62% 39%,
+    73% 61%,
+    86% 46%,
+    100% 65%,
+    100% 100%
+  );
+  opacity: 0.44;
+}
+
+.begin-expedition-ridge-near {
+  height: 9rem;
+  background: var(--brand-midnight-blue);
+  clip-path: polygon(
+    0 100%,
+    0 64%,
+    14% 45%,
+    29% 71%,
+    43% 48%,
+    57% 68%,
+    72% 40%,
+    85% 62%,
+    100% 43%,
+    100% 100%
+  );
+}
+
+@media (max-width: 47.999rem) {
+  .begin-expedition-sun {
+    top: -10rem;
+    right: -18rem;
+    width: 40rem;
+  }
+
+  .begin-expedition-bearing {
+    top: 17%;
+    width: 110vw;
+  }
+
+  .begin-expedition-ridge-far {
+    height: 10rem;
+  }
+
+  .begin-expedition-ridge-near {
+    height: 7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .arrival-copy,
+  .arrival-mist {
+    animation: none;
+  }
+
+  .arrival-copy {
+    opacity: 1;
+    transform: none;
+  }
+
+  :where(a, button, input, select, textarea, [tabindex]) {
+    transition: none;
+  }
+}

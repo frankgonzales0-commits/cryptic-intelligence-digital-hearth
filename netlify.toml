@@ -1,0 +1,12 @@
+[build]
+  command = "pnpm build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_SITE_ENV = "preview"
+
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_SITE_ENV = "preview"
