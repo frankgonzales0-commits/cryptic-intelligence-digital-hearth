@@ -1143,3 +1143,649 @@ body {
     transition: none;
   }
 }
+
+/* The Expedition: a continuous field map from trailhead to horizon. */
+.expedition-arrival,
+.expedition-traveler-story,
+.expedition-ecosystem,
+.expedition-summit,
+.expedition-guides,
+.expedition-continuation,
+.expedition-horizon {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.expedition-page-heading {
+  max-width: 12ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.4vw, 5rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.expedition-map-label {
+  color: var(--brand-evergreen);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.expedition-arrival {
+  min-height: calc(100svh - 5rem);
+  background:
+    linear-gradient(
+      112deg,
+      color-mix(in srgb, var(--brand-parchment) 98%, white) 0%,
+      var(--brand-parchment) 54%,
+      color-mix(in srgb, var(--brand-compass-gold) 16%, var(--brand-parchment))
+        100%
+    );
+}
+
+.expedition-arrival-map,
+.expedition-horizon-atmosphere {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.expedition-arrival-map > span,
+.expedition-horizon-atmosphere > span {
+  position: absolute;
+  display: block;
+}
+
+.expedition-arrival-sun {
+  top: -14rem;
+  right: -12rem;
+  width: min(66vw, 58rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 24%, transparent),
+    transparent 68%
+  );
+}
+
+.expedition-arrival-bearing {
+  top: 20%;
+  right: -8rem;
+  width: min(52vw, 42rem);
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--brand-evergreen) 38%, transparent) 0 0.45rem,
+    transparent 0.45rem 1rem
+  );
+  transform: rotate(-18deg);
+  transform-origin: center;
+}
+
+.expedition-arrival-bearing::before,
+.expedition-arrival-bearing::after {
+  position: absolute;
+  top: 50%;
+  border-radius: var(--radius-round);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.expedition-arrival-bearing::before {
+  left: 0;
+  width: 0.75rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--brand-evergreen);
+  background: var(--brand-parchment);
+}
+
+.expedition-arrival-bearing::after {
+  right: 0;
+  width: 0.45rem;
+  aspect-ratio: 1;
+  background: var(--brand-compass-gold);
+}
+
+.expedition-arrival-contours {
+  top: 7%;
+  right: -8%;
+  width: min(53vw, 48rem);
+  aspect-ratio: 1;
+  border: 1px solid
+    color-mix(in srgb, var(--brand-evergreen) 14%, transparent);
+  border-radius: 48% 52% 43% 57% / 56% 44% 56% 44%;
+  box-shadow:
+    0 0 0 2.7rem color-mix(in srgb, var(--brand-evergreen) 8%, transparent),
+    0 0 0 5.8rem color-mix(in srgb, var(--brand-evergreen) 7%, transparent),
+    0 0 0 9.2rem color-mix(in srgb, var(--brand-evergreen) 5%, transparent);
+  opacity: 0.62;
+  transform: rotate(14deg);
+}
+
+.expedition-arrival-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.expedition-arrival-ridge-far {
+  height: 17rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-slate-gray) 38%,
+    var(--brand-parchment)
+  );
+  clip-path: polygon(
+    0 100%, 0 80%, 9% 66%, 17% 75%, 28% 54%, 38% 70%, 51% 46%,
+    62% 69%, 74% 51%, 86% 72%, 100% 57%, 100% 100%
+  );
+  opacity: 0.7;
+}
+
+.expedition-arrival-ridge-near {
+  height: 11rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-evergreen) 86%,
+    var(--brand-midnight-blue)
+  );
+  clip-path: polygon(
+    0 100%, 0 69%, 13% 46%, 24% 72%, 38% 49%, 51% 76%, 64% 43%,
+    77% 69%, 90% 47%, 100% 68%, 100% 100%
+  );
+}
+
+.expedition-traveler-story {
+  background:
+    linear-gradient(90deg, transparent 0 48%, rgb(16 36 63 / 0.035) 48% 48.1%, transparent 48.1%),
+    var(--semantic-surface-raised);
+}
+
+.expedition-traveler-trail {
+  position: absolute;
+  z-index: 1;
+  top: 6rem;
+  bottom: 6rem;
+  left: clamp(1.5rem, 7vw, 7rem);
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--brand-compass-gold) 0 0.45rem,
+    transparent 0.45rem 1rem
+  );
+  opacity: 0.55;
+}
+
+.expedition-short-lines > p + p {
+  margin-top: 0.75rem;
+}
+
+.expedition-margin-note {
+  border-left: 3px solid var(--brand-compass-gold);
+  padding: 0.35rem 0 0.35rem 1.5rem;
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1.55;
+}
+
+.expedition-ecosystem {
+  background:
+    radial-gradient(
+      circle at 50% 56%,
+      color-mix(in srgb, var(--brand-evergreen) 92%, white) 0,
+      transparent 26rem
+    ),
+    var(--brand-midnight-blue);
+}
+
+.expedition-ecosystem-map {
+  position: relative;
+}
+
+.expedition-ecosystem-list {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-areas:
+    "guide traveler compass"
+    "hearth traveler library";
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.expedition-ecosystem-element {
+  position: relative;
+  min-width: 0;
+  border: 1px solid rgb(245 240 230 / 0.18);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: rgb(16 36 63 / 0.7);
+  box-shadow: 0 18px 44px rgb(0 0 0 / 0.12);
+}
+
+.expedition-ecosystem-traveler {
+  grid-area: traveler;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-color: color-mix(
+    in srgb,
+    var(--brand-compass-gold) 70%,
+    transparent
+  );
+  background: color-mix(
+    in srgb,
+    var(--brand-evergreen) 80%,
+    var(--brand-midnight-blue)
+  );
+}
+
+.expedition-ecosystem-guide {
+  grid-area: guide;
+}
+
+.expedition-ecosystem-compass {
+  grid-area: compass;
+}
+
+.expedition-ecosystem-hearth {
+  grid-area: hearth;
+}
+
+.expedition-ecosystem-library {
+  grid-area: library;
+}
+
+.expedition-map-point {
+  display: block;
+  width: 0.65rem;
+  aspect-ratio: 1;
+  margin-bottom: 1.25rem;
+  border: 2px solid var(--brand-compass-gold);
+  border-radius: var(--radius-round);
+  background: var(--brand-midnight-blue);
+}
+
+.expedition-ecosystem-traveler .expedition-map-point {
+  width: 1rem;
+  background: var(--brand-compass-gold);
+  box-shadow: 0 0 0 0.55rem rgb(184 135 47 / 0.18);
+}
+
+.expedition-ecosystem-lines {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.expedition-ecosystem-lines span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 37%;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--brand-compass-gold) 0 0.35rem,
+    transparent 0.35rem 0.8rem
+  );
+  transform-origin: left center;
+}
+
+.expedition-ecosystem-lines span:nth-child(1) {
+  transform: rotate(156deg);
+}
+
+.expedition-ecosystem-lines span:nth-child(2) {
+  transform: rotate(204deg);
+}
+
+.expedition-ecosystem-lines span:nth-child(3) {
+  transform: rotate(24deg);
+}
+
+.expedition-ecosystem-lines span:nth-child(4) {
+  transform: rotate(-24deg);
+}
+
+.expedition-summit {
+  background:
+    linear-gradient(
+      180deg,
+      var(--brand-parchment),
+      color-mix(in srgb, var(--brand-compass-gold) 9%, var(--brand-parchment))
+    );
+}
+
+.expedition-summit-line {
+  position: absolute;
+  z-index: 1;
+  right: -4%;
+  bottom: -1px;
+  left: -4%;
+  height: 18rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-slate-gray) 14%,
+    transparent
+  );
+  clip-path: polygon(
+    0 100%, 0 83%, 14% 72%, 29% 78%, 46% 40%, 56% 67%, 72% 56%,
+    87% 76%, 100% 67%, 100% 100%
+  );
+}
+
+.expedition-principle {
+  position: relative;
+  border-block: 1px solid
+    color-mix(in srgb, var(--brand-midnight-blue) 22%, transparent);
+  padding: clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 4rem);
+  color: var(--brand-midnight-blue);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.5vw, 2.75rem);
+  line-height: 1.35;
+  text-align: center;
+}
+
+.expedition-principle::before {
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  width: 1.4rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--brand-compass-gold);
+  border-radius: var(--radius-round);
+  background: var(--brand-parchment);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.expedition-guides {
+  background:
+    linear-gradient(
+      112deg,
+      color-mix(in srgb, var(--brand-midnight-blue) 92%, black),
+      color-mix(in srgb, var(--brand-evergreen) 75%, var(--brand-midnight-blue))
+    );
+}
+
+.expedition-guides .expedition-map-label {
+  color: var(--brand-compass-gold);
+}
+
+.expedition-field-guide {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgb(245 240 230 / 0.2);
+  list-style: none;
+}
+
+.expedition-field-note {
+  display: flex;
+  gap: 1rem;
+  border-right: 1px solid rgb(245 240 230 / 0.2);
+  padding: 2rem clamp(1rem, 2.5vw, 2rem) 0;
+}
+
+.expedition-field-note:last-child {
+  border-right: 0;
+}
+
+.expedition-field-marker {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--brand-compass-gold);
+  border-radius: var(--radius-round);
+  color: var(--brand-compass-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.expedition-continuation {
+  background: var(--semantic-surface-raised);
+}
+
+.expedition-returning-path {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: clamp(-18rem, -12vw, -8rem);
+  width: min(54vw, 44rem);
+  aspect-ratio: 1;
+  border: 1px dashed
+    color-mix(in srgb, var(--brand-evergreen) 26%, transparent);
+  border-radius: var(--radius-round);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.expedition-returning-path::before,
+.expedition-returning-path::after,
+.expedition-returning-path span {
+  position: absolute;
+  border-radius: var(--radius-round);
+  content: "";
+}
+
+.expedition-returning-path::before {
+  inset: 12%;
+  border: 1px solid
+    color-mix(in srgb, var(--brand-evergreen) 12%, transparent);
+}
+
+.expedition-returning-path::after {
+  inset: 26%;
+  border: 1px dashed
+    color-mix(in srgb, var(--brand-compass-gold) 32%, transparent);
+}
+
+.expedition-returning-path span {
+  width: 0.75rem;
+  aspect-ratio: 1;
+  background: var(--brand-compass-gold);
+}
+
+.expedition-returning-path span:nth-child(1) {
+  top: 8%;
+  left: 42%;
+}
+
+.expedition-returning-path span:nth-child(2) {
+  top: 47%;
+  left: -0.4rem;
+}
+
+.expedition-returning-path span:nth-child(3) {
+  right: 8%;
+  bottom: 17%;
+}
+
+.expedition-horizon {
+  background:
+    linear-gradient(
+      180deg,
+      var(--brand-parchment) 0,
+      color-mix(in srgb, var(--brand-compass-gold) 13%, var(--brand-parchment))
+        65%,
+      color-mix(in srgb, var(--brand-evergreen) 16%, var(--brand-parchment))
+        100%
+    );
+}
+
+.expedition-horizon-sun {
+  top: 16%;
+  left: 50%;
+  width: clamp(7rem, 13vw, 11rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: color-mix(
+    in srgb,
+    var(--brand-compass-gold) 52%,
+    transparent
+  );
+  box-shadow: 0 0 5rem 2rem rgb(184 135 47 / 0.14);
+  transform: translateX(-50%);
+}
+
+.expedition-horizon-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.expedition-horizon-ridge-far {
+  height: 16rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-slate-gray) 56%,
+    var(--brand-parchment)
+  );
+  clip-path: polygon(
+    0 100%, 0 73%, 12% 58%, 26% 74%, 40% 52%, 51% 69%, 63% 48%,
+    76% 70%, 89% 51%, 100% 67%, 100% 100%
+  );
+  opacity: 0.7;
+}
+
+.expedition-horizon-ridge-near {
+  height: 10rem;
+  background: var(--brand-midnight-blue);
+  clip-path: polygon(
+    0 100%, 0 64%, 13% 42%, 27% 69%, 41% 45%, 55% 72%, 69% 39%,
+    83% 66%, 100% 43%, 100% 100%
+  );
+}
+
+@media (max-width: 63.999rem) {
+  .expedition-ecosystem-list {
+    grid-template-areas:
+      "traveler traveler"
+      "guide compass"
+      "hearth library";
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .expedition-ecosystem-traveler {
+    min-height: 15rem;
+  }
+
+  .expedition-ecosystem-lines {
+    display: none;
+  }
+
+  .expedition-field-guide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .expedition-field-note:nth-child(2) {
+    border-right: 0;
+  }
+
+  .expedition-field-note:nth-child(n + 3) {
+    margin-top: 2rem;
+    border-top: 1px solid rgb(245 240 230 / 0.2);
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .expedition-arrival-sun {
+    top: -5rem;
+    right: -15rem;
+    width: 36rem;
+  }
+
+  .expedition-arrival-bearing {
+    top: 13%;
+    right: -14rem;
+    width: 28rem;
+  }
+
+  .expedition-arrival-contours {
+    top: 10%;
+    right: -16rem;
+    width: 30rem;
+    opacity: 0.42;
+  }
+
+  .expedition-arrival-ridge-far {
+    height: 10rem;
+  }
+
+  .expedition-arrival-ridge-near {
+    height: 6rem;
+  }
+
+  .expedition-traveler-trail {
+    left: 0.75rem;
+  }
+
+  .expedition-ecosystem-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .expedition-ecosystem-element {
+    padding: 1.5rem;
+  }
+
+  .expedition-ecosystem-traveler {
+    order: -1;
+    min-height: auto;
+  }
+
+  .expedition-field-guide {
+    display: block;
+  }
+
+  .expedition-field-note,
+  .expedition-field-note:nth-child(2),
+  .expedition-field-note:nth-child(n + 3) {
+    margin: 0;
+    border-top: 1px solid rgb(245 240 230 / 0.2);
+    border-right: 0;
+    padding: 1.75rem 0;
+  }
+
+  .expedition-returning-path {
+    right: -20rem;
+    width: 34rem;
+  }
+
+  .expedition-horizon-ridge-far {
+    height: 10rem;
+  }
+
+  .expedition-horizon-ridge-near {
+    height: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expedition-arrival-bearing,
+  .expedition-arrival-contours,
+  .expedition-returning-path {
+    transform: none;
+  }
+
+  .expedition-arrival-bearing {
+    transform: rotate(-18deg);
+  }
+
+  .expedition-horizon-sun {
+    transform: translateX(-50%);
+  }
+}
