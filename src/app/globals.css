@@ -1789,3 +1789,567 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* Expeditions: four marked trail stations within one connected landscape. */
+.expeditions-trailhead,
+.expeditions-orientation,
+.expeditions-paths,
+.expeditions-path-station,
+.expeditions-summit {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.expeditions-page-heading {
+  max-width: 12ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.2vw, 4.8rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.expeditions-map-label,
+.expeditions-field-label {
+  color: var(--brand-evergreen);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.expeditions-trailhead {
+  min-height: calc(100svh - 5rem);
+  background:
+    linear-gradient(
+      116deg,
+      color-mix(in srgb, var(--brand-parchment) 96%, white),
+      var(--brand-parchment) 58%,
+      color-mix(in srgb, var(--brand-compass-gold) 18%, var(--brand-parchment))
+    );
+}
+
+.expeditions-trailhead-map,
+.expeditions-summit-atmosphere,
+.expeditions-station-terrain {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.expeditions-trailhead-map > span,
+.expeditions-summit-atmosphere > span,
+.expeditions-station-terrain > span {
+  position: absolute;
+  display: block;
+}
+
+.expeditions-trailhead-light {
+  top: -17rem;
+  right: -13rem;
+  width: min(70vw, 62rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-compass-gold) 27%, transparent),
+    transparent 69%
+  );
+}
+
+.expeditions-trailhead-contours {
+  top: 4%;
+  right: -6%;
+  width: min(52vw, 47rem);
+  aspect-ratio: 1;
+  border: 1px solid
+    color-mix(in srgb, var(--brand-evergreen) 13%, transparent);
+  border-radius: 51% 49% 42% 58% / 46% 57% 43% 54%;
+  box-shadow:
+    0 0 0 2.6rem color-mix(in srgb, var(--brand-evergreen) 8%, transparent),
+    0 0 0 5.6rem color-mix(in srgb, var(--brand-evergreen) 7%, transparent),
+    0 0 0 8.9rem color-mix(in srgb, var(--brand-evergreen) 5%, transparent);
+  opacity: 0.65;
+  transform: rotate(-8deg);
+}
+
+.expeditions-trailhead-route {
+  top: 34%;
+  left: 71%;
+  width: 24rem;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--brand-evergreen) 38%, transparent) 0 0.45rem,
+    transparent 0.45rem 1rem
+  );
+  transform-origin: left center;
+}
+
+.expeditions-trailhead-route::before {
+  position: absolute;
+  top: 50%;
+  left: -0.45rem;
+  width: 0.85rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--brand-evergreen);
+  border-radius: var(--radius-round);
+  background: var(--brand-parchment);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.expeditions-trailhead-route-left {
+  transform: rotate(148deg);
+}
+
+.expeditions-trailhead-route-center {
+  transform: rotate(185deg);
+}
+
+.expeditions-trailhead-route-right {
+  transform: rotate(218deg);
+}
+
+.expeditions-trailhead-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.expeditions-trailhead-ridge-far {
+  height: 15rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-slate-gray) 42%,
+    var(--brand-parchment)
+  );
+  clip-path: polygon(
+    0 100%, 0 78%, 12% 62%, 23% 72%, 36% 49%, 49% 70%, 62% 43%,
+    75% 68%, 88% 50%, 100% 67%, 100% 100%
+  );
+  opacity: 0.7;
+}
+
+.expeditions-trailhead-ridge-near {
+  height: 9rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-evergreen) 88%,
+    var(--brand-midnight-blue)
+  );
+  clip-path: polygon(
+    0 100%, 0 66%, 14% 44%, 28% 71%, 41% 48%, 55% 74%, 69% 41%,
+    83% 68%, 100% 45%, 100% 100%
+  );
+}
+
+.expeditions-orientation {
+  background:
+    linear-gradient(90deg, transparent 0 48%, rgb(16 36 63 / 0.035) 48% 48.1%, transparent 48.1%),
+    var(--semantic-surface-raised);
+}
+
+.expeditions-orientation-bearing {
+  position: absolute;
+  z-index: 1;
+  top: 5rem;
+  bottom: 5rem;
+  left: clamp(1rem, 6vw, 6rem);
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--brand-compass-gold) 0 0.45rem,
+    transparent 0.45rem 1rem
+  );
+  opacity: 0.55;
+}
+
+.expeditions-orientation-note {
+  border-left: 3px solid var(--brand-compass-gold);
+  padding-left: clamp(1.5rem, 4vw, 3rem);
+}
+
+.expeditions-paths {
+  background: var(--brand-parchment);
+}
+
+.expeditions-route-line {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--brand-compass-gold) 72%, transparent) 0 0.55rem,
+    transparent 0.55rem 1.25rem
+  );
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.expeditions-path-station {
+  min-height: 48rem;
+  border-top: 1px solid
+    color-mix(in srgb, var(--brand-midnight-blue) 12%, transparent);
+}
+
+.expeditions-path-personal {
+  background:
+    linear-gradient(
+      110deg,
+      var(--semantic-surface-raised),
+      color-mix(in srgb, var(--brand-evergreen) 8%, var(--brand-parchment))
+    );
+}
+
+.expeditions-path-professional {
+  background:
+    linear-gradient(
+      250deg,
+      color-mix(in srgb, var(--brand-slate-gray) 11%, var(--brand-parchment)),
+      var(--brand-parchment)
+    );
+}
+
+.expeditions-path-organizational {
+  background:
+    linear-gradient(
+      110deg,
+      color-mix(in srgb, var(--brand-evergreen) 14%, var(--brand-parchment)),
+      var(--semantic-surface-raised)
+    );
+}
+
+.expeditions-path-discovery {
+  background:
+    linear-gradient(
+      250deg,
+      color-mix(in srgb, var(--brand-compass-gold) 12%, var(--brand-parchment)),
+      var(--brand-parchment)
+    );
+}
+
+.expeditions-station-contour {
+  top: 50%;
+  width: min(38vw, 34rem);
+  aspect-ratio: 1;
+  border: 1px solid
+    color-mix(in srgb, var(--brand-evergreen) 11%, transparent);
+  border-radius: 43% 57% 49% 51% / 55% 44% 56% 45%;
+  box-shadow:
+    0 0 0 2.2rem color-mix(in srgb, var(--brand-evergreen) 5%, transparent),
+    0 0 0 4.8rem color-mix(in srgb, var(--brand-evergreen) 4%, transparent);
+  transform: translateY(-50%) rotate(12deg);
+}
+
+.expeditions-path-personal .expeditions-station-contour,
+.expeditions-path-organizational .expeditions-station-contour {
+  right: -8rem;
+}
+
+.expeditions-path-professional .expeditions-station-contour,
+.expeditions-path-discovery .expeditions-station-contour {
+  left: -8rem;
+}
+
+.expeditions-station-bearing {
+  top: 22%;
+  width: 35%;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--brand-slate-gray) 24%, transparent) 0 0.4rem,
+    transparent 0.4rem 1rem
+  );
+}
+
+.expeditions-path-personal .expeditions-station-bearing,
+.expeditions-path-organizational .expeditions-station-bearing {
+  right: 0;
+  transform: rotate(-8deg);
+}
+
+.expeditions-path-professional .expeditions-station-bearing,
+.expeditions-path-discovery .expeditions-station-bearing {
+  left: 0;
+  transform: rotate(8deg);
+}
+
+.expeditions-station-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(5rem, 10vw, 10rem);
+  align-items: start;
+}
+
+.expeditions-path-professional .expeditions-station-header,
+.expeditions-path-discovery .expeditions-station-header {
+  grid-column: 2;
+}
+
+.expeditions-path-professional .expeditions-field-entry,
+.expeditions-path-discovery .expeditions-field-entry {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.expeditions-station-marker-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.expeditions-station-marker {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--brand-compass-gold);
+  border-radius: var(--radius-round);
+  background: var(--brand-midnight-blue);
+  color: var(--brand-parchment);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 0 0 0.5rem rgb(184 135 47 / 0.1);
+}
+
+.expeditions-supporting-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.1vw, 1.65rem);
+  line-height: 1.4;
+  list-style: none;
+}
+
+.expeditions-field-entry {
+  border-top: 1px solid
+    color-mix(in srgb, var(--brand-midnight-blue) 24%, transparent);
+  padding-top: 1.5rem;
+}
+
+.expeditions-question-list {
+  list-style: none;
+}
+
+.expeditions-question-list li {
+  display: grid;
+  grid-template-columns: 0.75rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--brand-midnight-blue) 13%, transparent);
+  padding: 1rem 0;
+  color: var(--semantic-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.expeditions-question-list li > span {
+  width: 0.55rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--brand-compass-gold);
+  border-radius: var(--radius-round);
+}
+
+.expeditions-closing-line {
+  border-left: 3px solid var(--brand-compass-gold);
+  padding-left: 1.25rem;
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.expeditions-summit {
+  background:
+    linear-gradient(
+      180deg,
+      var(--brand-parchment),
+      color-mix(in srgb, var(--brand-compass-gold) 14%, var(--brand-parchment))
+        65%,
+      color-mix(in srgb, var(--brand-evergreen) 16%, var(--brand-parchment))
+    );
+}
+
+.expeditions-summit-sun {
+  top: 15%;
+  left: 50%;
+  width: clamp(7rem, 13vw, 11rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: color-mix(
+    in srgb,
+    var(--brand-compass-gold) 48%,
+    transparent
+  );
+  box-shadow: 0 0 5rem 2rem rgb(184 135 47 / 0.14);
+  transform: translateX(-50%);
+}
+
+.expeditions-summit-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.expeditions-summit-ridge-far {
+  height: 16rem;
+  background: color-mix(
+    in srgb,
+    var(--brand-slate-gray) 54%,
+    var(--brand-parchment)
+  );
+  clip-path: polygon(
+    0 100%, 0 72%, 12% 56%, 25% 74%, 39% 50%, 52% 69%, 65% 45%,
+    78% 71%, 90% 52%, 100% 66%, 100% 100%
+  );
+  opacity: 0.7;
+}
+
+.expeditions-summit-ridge-near {
+  height: 10rem;
+  background: var(--brand-midnight-blue);
+  clip-path: polygon(
+    0 100%, 0 63%, 14% 41%, 28% 70%, 42% 46%, 56% 73%, 70% 39%,
+    84% 67%, 100% 43%, 100% 100%
+  );
+}
+
+.expeditions-summit-principle {
+  border-block: 1px solid
+    color-mix(in srgb, var(--brand-midnight-blue) 20%, transparent);
+  padding: clamp(2rem, 5vw, 3.25rem) clamp(1rem, 4vw, 3rem);
+  color: var(--brand-midnight-blue);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+  line-height: 1.4;
+}
+
+@media (max-width: 63.999rem) {
+  .expeditions-route-line {
+    left: clamp(1.75rem, 5vw, 3rem);
+  }
+
+  .expeditions-path-station {
+    min-height: 0;
+  }
+
+  .expeditions-station-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3.5rem;
+    padding-left: clamp(2rem, 6vw, 4rem);
+  }
+
+  .expeditions-path-professional .expeditions-station-header,
+  .expeditions-path-discovery .expeditions-station-header,
+  .expeditions-path-professional .expeditions-field-entry,
+  .expeditions-path-discovery .expeditions-field-entry {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .expeditions-path-professional .expeditions-station-header,
+  .expeditions-path-discovery .expeditions-station-header {
+    order: -1;
+  }
+
+  .expeditions-station-contour {
+    width: 30rem;
+    opacity: 0.65;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .expeditions-trailhead-light {
+    top: -6rem;
+    right: -16rem;
+    width: 38rem;
+  }
+
+  .expeditions-trailhead-contours {
+    top: 8%;
+    right: -17rem;
+    width: 31rem;
+    opacity: 0.42;
+  }
+
+  .expeditions-trailhead-route {
+    top: 22%;
+    left: 83%;
+    width: 15rem;
+  }
+
+  .expeditions-trailhead-ridge-far {
+    height: 10rem;
+  }
+
+  .expeditions-trailhead-ridge-near {
+    height: 6rem;
+  }
+
+  .expeditions-orientation-bearing {
+    left: 0.75rem;
+  }
+
+  .expeditions-orientation-note {
+    padding-left: 1.25rem;
+  }
+
+  .expeditions-route-line {
+    left: 1.1rem;
+  }
+
+  .expeditions-station-grid {
+    gap: 3rem;
+    padding-left: 1.5rem;
+  }
+
+  .expeditions-station-marker-row {
+    align-items: flex-start;
+  }
+
+  .expeditions-station-marker {
+    width: 2.65rem;
+  }
+
+  .expeditions-station-contour {
+    width: 25rem;
+    opacity: 0.45;
+  }
+
+  .expeditions-station-bearing {
+    width: 55%;
+  }
+
+  .expeditions-summit-ridge-far {
+    height: 10rem;
+  }
+
+  .expeditions-summit-ridge-near {
+    height: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expeditions-trailhead-contours,
+  .expeditions-station-contour {
+    transform: none;
+  }
+
+  .expeditions-summit-sun {
+    transform: translateX(-50%);
+  }
+}
