@@ -56,6 +56,10 @@ export function ExpeditionJournal({
 
     formData.forEach((value, key) => {
       if (typeof value === "string") {
+        if (key === "traveler-phone" && value.trim() === "") {
+          return;
+        }
+
         encodedData.append(key, value);
       }
     });
@@ -170,6 +174,21 @@ export function ExpeditionJournal({
           />
           <p className="expedition-journal-hint" id="traveler-email-hint">
             An email address is enough for a first conversation.
+          </p>
+        </div>
+
+        <div className="expedition-journal-field md:col-start-2">
+          <label htmlFor="traveler-phone">Phone Number (Optional)</label>
+          <input
+            aria-describedby="traveler-phone-hint"
+            autoComplete="tel"
+            id="traveler-phone"
+            name="traveler-phone"
+            type="tel"
+          />
+          <p className="expedition-journal-hint" id="traveler-phone-hint">
+            If you would prefer a phone conversation, you may leave a number
+            below.
           </p>
         </div>
 
