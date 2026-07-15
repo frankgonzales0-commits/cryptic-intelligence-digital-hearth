@@ -292,7 +292,8 @@ export default function Home() {
           <div className="mt-16 sm:mt-20 lg:mt-24">
             <PublicationShelf
               items={publications}
-              label="Publications coming to the Library"
+              label="Available publications and shelves awaiting future works"
+              emptyPositions={3}
             />
           </div>
 

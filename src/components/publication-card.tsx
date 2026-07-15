@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
-
 import type { Publication } from "@/data/publications";
 
 type PublicationCardProps = {
@@ -13,13 +11,13 @@ export function PublicationCard({ publication }: PublicationCardProps) {
       <div
         className={`publication-cover publication-cover-${publication.coverTone}`}
       >
-        {publication.cover ? (
+        {publication.coverImagePath ? (
           <Image
-            alt={publication.cover.alt}
+            alt={`Cover of ${publication.title}`}
             className="object-cover"
             fill
             sizes="(min-width: 1024px) 17rem, (min-width: 640px) 38vw, 72vw"
-            src={publication.cover.src}
+            src={publication.coverImagePath}
           />
         ) : (
           <div aria-hidden="true" className="publication-cover-placeholder">
@@ -38,15 +36,6 @@ export function PublicationCard({ publication }: PublicationCardProps) {
           {publication.status}
         </p>
 
-        {publication.access ? (
-          <Link
-            className="mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-evergreen underline decoration-compass-gold decoration-2 underline-offset-4"
-            download={publication.access.download}
-            href={publication.access.href}
-          >
-            {publication.access.label}
-          </Link>
-        ) : null}
       </div>
     </article>
   );
