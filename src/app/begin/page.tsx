@@ -1,7 +1,4 @@
-import {
-  ExpeditionJournal,
-  JournalSubmitButton,
-} from "@/components/expedition-journal";
+import { ExpeditionJournal } from "@/components/expedition-journal";
 import { SectionContainer } from "@/components/section-container";
 import { TextLink } from "@/components/ui/text-link";
 import { createPageMetadata } from "@/lib/metadata";
@@ -214,7 +211,6 @@ export default async function BeginPage({ searchParams }: BeginPageProps) {
             </div>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
-              <JournalSubmitButton />
               <TextLink
                 className="w-full justify-center px-3 sm:w-auto"
                 href="/expeditions"
@@ -222,12 +218,6 @@ export default async function BeginPage({ searchParams }: BeginPageProps) {
                 Return to the Trailheads
               </TextLink>
             </div>
-            <p
-              className="mx-auto mt-5 max-w-[34rem] text-sm leading-6 text-text-muted"
-              id="begin-action-status"
-            >
-              Your words remain on this page if the journal cannot reach the Hearth.
-            </p>
           </div>
         </SectionContainer>
       </section>

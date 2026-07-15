@@ -1,22 +1,15 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const formId = "traveler-journal";
-const submissionEventName = "traveler-journal-submission-state";
 
 type ExpeditionJournalProps = {
   pathName?: string;
   pathValue: string;
 };
-
-function announceSubmissionState(isSubmitting: boolean) {
-  window.dispatchEvent(
-    new CustomEvent<boolean>(submissionEventName, { detail: isSubmitting }),
-  );
-}
 
 export function ExpeditionJournal({
   pathName,
@@ -24,6 +17,7 @@ export function ExpeditionJournal({
 }: ExpeditionJournalProps) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const submissionInProgress = useRef(false);
   const article = pathName === "Organizational" ? "an" : "a";
   const journalContext = pathName
@@ -39,7 +33,7 @@ export function ExpeditionJournal({
 
     submissionInProgress.current = true;
     setErrorMessage("");
-    announceSubmissionState(true);
+    setIsSubmitting(true);
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -65,12 +59,16 @@ export function ExpeditionJournal({
       router.push("/journal-received");
     } catch {
       submissionInProgress.current = false;
+      setIsSubmitting(false);
       setErrorMessage(
         "The journal could not reach the Hearth just yet. Your words remain here, and you may try again.",
       );
-      announceSubmissionState(false);
     }
   }
+
+  const submissionLabel = isSubmitting
+    ? "Carrying your journal to the Hearth..."
+    : "Submit to the Hearth";
 
   return (
     <form
@@ -176,6 +174,27 @@ export function ExpeditionJournal({
         <span>Every expedition begins with a single conversation.</span>
       </p>
 
+      <div className="expedition-journal-submit">
+        <button
+          aria-describedby="journal-submit-status"
+          className="inline-flex min-h-11 w-full items-center justify-center rounded-[var(--radius-control)] bg-midnight px-5 py-2.5 text-sm font-semibold text-parchment transition-colors duration-[var(--motion-duration-fast)] hover:bg-evergreen disabled:cursor-wait disabled:opacity-70 sm:w-auto sm:min-w-52"
+          disabled={isSubmitting}
+          type="submit"
+        >
+          {submissionLabel}
+        </button>
+        <p
+          aria-live="polite"
+          className="expedition-journal-submit-status"
+          id="journal-submit-status"
+          role="status"
+        >
+          {isSubmitting
+            ? submissionLabel
+            : "Your words remain on this page if the journal cannot reach the Hearth."}
+        </p>
+      </div>
+
       <p
         aria-live="polite"
         className="expedition-journal-error"
@@ -184,40 +203,5 @@ export function ExpeditionJournal({
         {errorMessage}
       </p>
     </form>
-  );
-}
-
-export function JournalSubmitButton() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    function handleSubmissionState(event: Event) {
-      setIsSubmitting((event as CustomEvent<boolean>).detail);
-    }
-
-    window.addEventListener(submissionEventName, handleSubmissionState);
-    return () =>
-      window.removeEventListener(submissionEventName, handleSubmissionState);
-  }, []);
-
-  const label = isSubmitting
-    ? "Carrying your journal to the Hearth..."
-    : "Submit to the Hearth";
-
-  return (
-    <>
-      <button
-        aria-describedby="begin-action-status"
-        className="inline-flex min-h-11 w-full items-center justify-center rounded-[var(--radius-control)] bg-midnight px-5 py-2.5 text-sm font-semibold text-parchment transition-colors duration-[var(--motion-duration-fast)] hover:bg-evergreen disabled:cursor-wait disabled:opacity-70 sm:w-auto sm:min-w-52"
-        disabled={isSubmitting}
-        form={formId}
-        type="submit"
-      >
-        {label}
-      </button>
-      <span aria-live="polite" className="sr-only">
-        {isSubmitting ? label : ""}
-      </span>
-    </>
   );
 }
