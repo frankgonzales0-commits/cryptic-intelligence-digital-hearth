@@ -5282,3 +5282,160 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* The First Journal: Netlify submission states and receipt confirmation. */
+.expedition-journal-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.expedition-journal-required-note {
+  margin-top: 1rem;
+  color: var(--semantic-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.expedition-journal-required {
+  margin-left: 0.35rem;
+  color: var(--brand-evergreen);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.expedition-journal-privacy span {
+  display: block;
+}
+
+.expedition-journal-error {
+  min-height: 1.6rem;
+  margin-top: 1rem;
+  color: #782f2f;
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+.journal-received {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100svh - 5rem);
+  overflow: hidden;
+  background:
+    linear-gradient(108deg, rgb(245 240 230 / 0.98), rgb(245 240 230 / 0.92) 55%, rgb(255 253 248 / 0.74)),
+    repeating-linear-gradient(0deg, transparent 0, transparent 2rem, rgb(91 103 115 / 0.05) 2.05rem);
+}
+
+.journal-received-atmosphere {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.journal-received-atmosphere > span {
+  position: absolute;
+  display: block;
+}
+
+.journal-received-light {
+  top: -24rem;
+  left: 50%;
+  width: min(85vw, 74rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(circle, rgb(255 253 248 / 0.98), rgb(184 135 47 / 0.22) 38%, transparent 69%);
+  transform: translateX(-50%);
+}
+
+.journal-received-compass {
+  top: 14%;
+  left: 50%;
+  width: clamp(19rem, 38vw, 34rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(40 81 67 / 0.16);
+  border-radius: var(--radius-round);
+  opacity: 0.52;
+  transform: translateX(-50%);
+}
+
+.journal-received-compass::before,
+.journal-received-compass::after {
+  position: absolute;
+  content: "";
+}
+
+.journal-received-compass::before {
+  inset: 12%;
+  border: 1px dashed rgb(184 135 47 / 0.34);
+  transform: rotate(45deg);
+}
+
+.journal-received-compass::after {
+  inset: 33%;
+  border: 1px solid rgb(40 81 67 / 0.25);
+  border-radius: var(--radius-round);
+}
+
+.journal-received-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.journal-received-ridge-far {
+  height: 13rem;
+  background: color-mix(in srgb, var(--brand-slate-gray) 34%, var(--brand-parchment));
+  clip-path: polygon(0 100%, 0 72%, 12% 55%, 26% 76%, 41% 50%, 55% 73%, 70% 42%, 84% 68%, 100% 47%, 100% 100%);
+  opacity: 0.65;
+}
+
+.journal-received-ridge-near {
+  height: 7.5rem;
+  background: var(--brand-midnight-blue);
+  clip-path: polygon(0 100%, 0 66%, 15% 43%, 30% 72%, 45% 47%, 60% 74%, 75% 39%, 89% 67%, 100% 46%, 100% 100%);
+}
+
+@media (max-width: 47.999rem) {
+  .expedition-journal-required {
+    display: block;
+    margin-top: 0.2rem;
+    margin-left: 0;
+  }
+
+  .journal-received-light {
+    top: -13rem;
+    width: 42rem;
+  }
+
+  .journal-received-compass {
+    top: 12%;
+    width: 23rem;
+    opacity: 0.32;
+  }
+
+  .journal-received-ridge-far {
+    height: 9rem;
+  }
+
+  .journal-received-ridge-near {
+    height: 5.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journal-received-light,
+  .journal-received-compass {
+    transform: translateX(-50%);
+  }
+}

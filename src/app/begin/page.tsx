@@ -1,4 +1,7 @@
-import { ExpeditionJournal } from "@/components/expedition-journal";
+import {
+  ExpeditionJournal,
+  JournalSubmitButton,
+} from "@/components/expedition-journal";
 import { SectionContainer } from "@/components/section-container";
 import { TextLink } from "@/components/ui/text-link";
 import { createPageMetadata } from "@/lib/metadata";
@@ -26,6 +29,7 @@ export default async function BeginPage({ searchParams }: BeginPageProps) {
     requestedPath && requestedPath in pathNames
       ? pathNames[requestedPath as keyof typeof pathNames]
       : undefined;
+  const pathValue = pathName && requestedPath ? requestedPath : "open";
 
   return (
     <>
@@ -130,7 +134,7 @@ export default async function BeginPage({ searchParams }: BeginPageProps) {
           </header>
 
           <div className="mt-14 sm:mt-18 lg:mt-20">
-            <ExpeditionJournal pathName={pathName} />
+            <ExpeditionJournal pathName={pathName} pathValue={pathValue} />
           </div>
         </SectionContainer>
       </section>
@@ -210,14 +214,7 @@ export default async function BeginPage({ searchParams }: BeginPageProps) {
             </div>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
-              <button
-                aria-describedby="begin-action-status"
-                className="inline-flex min-h-11 w-full cursor-not-allowed items-center justify-center rounded-[var(--radius-control)] bg-midnight px-5 py-2.5 text-sm font-semibold text-parchment opacity-60 sm:w-auto sm:min-w-52"
-                disabled
-                type="button"
-              >
-                Begin My Expedition
-              </button>
+              <JournalSubmitButton />
               <TextLink
                 className="w-full justify-center px-3 sm:w-auto"
                 href="/expeditions"
@@ -229,8 +226,7 @@ export default async function BeginPage({ searchParams }: BeginPageProps) {
               className="mx-auto mt-5 max-w-[34rem] text-sm leading-6 text-text-muted"
               id="begin-action-status"
             >
-              Journal sending is not active yet. Your words remain in this page
-              until you leave or refresh.
+              Your words remain on this page if the journal cannot reach the Hearth.
             </p>
           </div>
         </SectionContainer>

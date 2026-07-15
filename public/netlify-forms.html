@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Traveler Journal Form Definition</title>
+  </head>
+  <body>
+    <form
+      action="/journal-received"
+      data-netlify="true"
+      data-netlify-honeypot="company-website"
+      method="POST"
+      name="traveler-journal"
+    >
+      <input name="form-name" type="hidden" value="traveler-journal" />
+      <input name="expedition-path" type="hidden" />
+      <input name="company-website" type="text" />
+      <input name="traveler-name" type="text" />
+      <input name="traveler-email" type="email" />
+      <textarea name="what-brings-you-here"></textarea>
+      <textarea name="question-on-your-mind"></textarea>
+    </form>
+  </body>
+</html>
