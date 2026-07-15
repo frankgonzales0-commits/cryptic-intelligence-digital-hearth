@@ -4609,3 +4609,676 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* The Guides: a field journal about service, growth, and stewardship. */
+.guides-arrival,
+.guide-definition,
+.guide-circle,
+.guide-stage,
+.guide-promise,
+.guide-horizon {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.guides-arrival {
+  background:
+    linear-gradient(106deg, rgb(245 240 230 / 0.98), rgb(245 240 230 / 0.93) 54%, rgb(255 253 248 / 0.72)),
+    repeating-linear-gradient(0deg, transparent 0, transparent 2rem, rgb(91 103 115 / 0.05) 2.05rem);
+}
+
+.guides-arrival-atmosphere,
+.guide-horizon-atmosphere {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.guides-arrival-atmosphere > span,
+.guide-horizon-atmosphere > span {
+  position: absolute;
+  display: block;
+}
+
+.guides-arrival-light {
+  top: -22rem;
+  right: -17rem;
+  width: min(82vw, 70rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(circle, rgb(255 253 248 / 0.98), rgb(184 135 47 / 0.2) 38%, transparent 69%);
+}
+
+.guides-arrival-compass {
+  top: 12%;
+  right: clamp(-9rem, -4vw, -2rem);
+  width: clamp(20rem, 39vw, 35rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(40 81 67 / 0.22);
+  border-radius: var(--radius-round);
+  opacity: 0.68;
+}
+
+.guides-arrival-compass::before,
+.guides-arrival-compass::after {
+  position: absolute;
+  content: "";
+}
+
+.guides-arrival-compass::before {
+  inset: 12%;
+  border: 1px dashed rgb(184 135 47 / 0.38);
+  transform: rotate(45deg);
+}
+
+.guides-arrival-compass::after {
+  inset: 32%;
+  border: 1px solid rgb(40 81 67 / 0.32);
+  border-radius: var(--radius-round);
+}
+
+.guides-arrival-path {
+  right: 18%;
+  bottom: 5rem;
+  width: min(27vw, 20rem);
+  height: 47%;
+  border-left: 2px dashed rgb(184 135 47 / 0.3);
+  opacity: 0.7;
+  transform: rotate(17deg) skewX(-9deg);
+}
+
+.guides-arrival-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.guides-arrival-ridge-far {
+  height: 11rem;
+  background: color-mix(in srgb, var(--brand-slate-gray) 31%, var(--brand-parchment));
+  clip-path: polygon(0 100%, 0 72%, 12% 55%, 26% 76%, 41% 50%, 55% 73%, 70% 42%, 84% 68%, 100% 47%, 100% 100%);
+  opacity: 0.63;
+}
+
+.guides-arrival-ridge-near {
+  height: 6.5rem;
+  background: color-mix(in srgb, var(--brand-evergreen) 77%, var(--brand-midnight-blue));
+  clip-path: polygon(0 100%, 0 66%, 15% 43%, 30% 72%, 45% 47%, 60% 74%, 75% 39%, 89% 67%, 100% 46%, 100% 100%);
+}
+
+.guides-short-lines p + p {
+  margin-top: 0.35rem;
+}
+
+.guide-field-label {
+  color: var(--guide-accent, var(--brand-evergreen));
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.guide-page-heading {
+  max-width: 13ch;
+  color: var(--guide-ink, var(--brand-midnight-blue));
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.75rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.guide-definition {
+  background:
+    linear-gradient(112deg, rgb(255 253 248 / 0.64), transparent 58%),
+    var(--brand-parchment);
+}
+
+.guide-definition-marks {
+  position: absolute;
+  z-index: 1;
+  right: 4%;
+  bottom: 10%;
+  width: min(44vw, 35rem);
+  height: 70%;
+  pointer-events: none;
+}
+
+.guide-definition-marks span {
+  position: absolute;
+  display: block;
+  border: 1px solid rgb(40 81 67 / 0.12);
+  border-radius: var(--radius-round);
+}
+
+.guide-definition-marks span:nth-child(1) {
+  inset: 0;
+}
+
+.guide-definition-marks span:nth-child(2) {
+  inset: 19%;
+  border-style: dashed;
+  border-color: rgb(184 135 47 / 0.23);
+}
+
+.guide-definition-marks span:nth-child(3) {
+  inset: 39%;
+}
+
+.guide-definition-statement {
+  position: relative;
+  border-left: 2px solid var(--brand-compass-gold);
+  padding: 0.65rem 0 0.65rem clamp(1.3rem, 3vw, 2.25rem);
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3.2vw, 2.4rem);
+  line-height: 1.42;
+}
+
+.guide-circle {
+  --guide-ink: var(--brand-parchment);
+  --guide-accent: var(--brand-compass-gold);
+  background:
+    radial-gradient(circle at 50% 47%, rgb(40 81 67 / 0.55), transparent 30rem),
+    linear-gradient(125deg, var(--brand-midnight-blue), color-mix(in srgb, var(--brand-evergreen) 54%, var(--brand-midnight-blue)));
+  color: var(--brand-parchment);
+}
+
+.guide-growth-cycle {
+  position: relative;
+  display: grid;
+  max-width: 65rem;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 4rem);
+  list-style: none;
+}
+
+.guide-growth-cycle::before,
+.guide-growth-cycle::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.guide-growth-cycle::before {
+  inset: 0;
+  border: 1px solid rgb(184 135 47 / 0.38);
+  border-radius: 50%;
+}
+
+.guide-growth-cycle::after {
+  inset: 8%;
+  border: 1px dashed rgb(245 240 230 / 0.16);
+  border-radius: 50%;
+}
+
+.guide-growth-step,
+.guide-growth-return {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guide-growth-step {
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.guide-growth-index {
+  color: var(--brand-compass-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.guide-growth-name,
+.guide-growth-return span {
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 600;
+}
+
+.guide-growth-arrow {
+  margin-top: 0.7rem;
+  color: var(--brand-compass-gold);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.guide-growth-return {
+  color: rgb(245 240 230 / 0.58);
+}
+
+.guide-stage {
+  --guide-ink: var(--semantic-text-primary);
+  --guide-muted: var(--semantic-text-muted);
+  --guide-accent: var(--brand-evergreen);
+  background: var(--brand-parchment);
+  color: var(--guide-ink);
+}
+
+.guide-stage + .guide-stage {
+  border-top: 1px solid rgb(184 135 47 / 0.22);
+}
+
+.guide-stage-light {
+  background:
+    linear-gradient(110deg, rgb(255 253 248 / 0.64), transparent 58%),
+    repeating-linear-gradient(90deg, transparent 0, transparent 2.5rem, rgb(16 36 63 / 0.025) 2.55rem),
+    var(--brand-parchment);
+}
+
+.guide-stage-warm {
+  background:
+    radial-gradient(circle at 17% 48%, rgb(184 135 47 / 0.2), transparent 30rem),
+    linear-gradient(110deg, rgb(255 253 248 / 0.7), transparent 62%),
+    color-mix(in srgb, var(--brand-compass-gold) 9%, var(--brand-parchment));
+}
+
+.guide-stage-dark {
+  --guide-ink: var(--brand-parchment);
+  --guide-muted: rgb(245 240 230 / 0.77);
+  --guide-accent: var(--brand-compass-gold);
+  background:
+    linear-gradient(125deg, rgb(16 36 63 / 0.99), rgb(31 63 57 / 0.98)),
+    repeating-linear-gradient(0deg, transparent 0, transparent 2rem, rgb(245 240 230 / 0.025) 2.05rem);
+}
+
+.guide-stage-layout {
+  display: grid;
+  align-items: center;
+  gap: clamp(3rem, 8vw, 7rem);
+}
+
+.guide-stage-study {
+  position: relative;
+  min-height: clamp(18rem, 38vw, 32rem);
+  border: 1px solid color-mix(in srgb, var(--guide-accent) 43%, transparent);
+  background:
+    linear-gradient(90deg, transparent 49.8%, color-mix(in srgb, var(--guide-accent) 15%, transparent) 50%, transparent 50.2%),
+    linear-gradient(transparent 49.8%, color-mix(in srgb, var(--guide-accent) 15%, transparent) 50%, transparent 50.2%);
+  background-size: 4rem 4rem;
+  color: var(--guide-accent);
+}
+
+.guide-stage-study::before,
+.guide-stage-study::after {
+  position: absolute;
+  display: block;
+  content: "";
+}
+
+.guide-stage-study::before {
+  inset: 9%;
+  border: 1px dashed color-mix(in srgb, var(--guide-accent) 38%, transparent);
+}
+
+.guide-stage-study::after {
+  right: 13%;
+  bottom: 13%;
+  left: 13%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.guide-stage-number {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  left: 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 1;
+  opacity: 0.25;
+}
+
+.guide-stage-orbit,
+.guide-stage-symbol {
+  position: absolute;
+  display: block;
+}
+
+.guide-stage-orbit {
+  top: 50%;
+  left: 50%;
+  width: 54%;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-round);
+  opacity: 0.62;
+  transform: translate(-50%, -50%);
+}
+
+.guide-stage-orbit::before,
+.guide-stage-orbit::after {
+  position: absolute;
+  content: "";
+}
+
+.guide-stage-orbit::before {
+  inset: 17%;
+  border: 1px dashed currentColor;
+  border-radius: var(--radius-round);
+}
+
+.guide-stage-orbit::after {
+  top: 50%;
+  right: -16%;
+  left: -16%;
+  height: 1px;
+  background: currentColor;
+}
+
+.guide-stage-symbol {
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 23%;
+  aspect-ratio: 1;
+  border: 2px solid currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.guide-stage-study-guide .guide-stage-symbol {
+  border-radius: 50% 50% 0 50%;
+}
+
+.guide-stage-study-steward .guide-stage-symbol {
+  width: 28%;
+  border-radius: var(--radius-round);
+  box-shadow: 0 0 0 1.25rem color-mix(in srgb, var(--guide-accent) 8%, transparent);
+}
+
+.guide-stage-study-keeper .guide-stage-symbol {
+  border-radius: 50% 50% 0 0;
+  transform: translate(-50%, -50%);
+}
+
+.guide-stage-copy .guide-field-label {
+  color: var(--guide-accent);
+}
+
+.guide-stage-copy .guide-page-heading {
+  color: var(--guide-ink);
+}
+
+.guide-stage-body {
+  max-width: 45rem;
+  color: var(--guide-muted);
+  font-size: 1.0625rem;
+  line-height: 2rem;
+}
+
+.guide-stage-body > * + * {
+  margin-top: 1.15rem;
+}
+
+.guide-stage-emphasis {
+  color: var(--guide-ink);
+  font-weight: 650;
+}
+
+.guide-stage-principle {
+  border-left: 2px solid var(--brand-compass-gold);
+  padding: 0.5rem 0 0.5rem clamp(1.25rem, 3vw, 2rem);
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  line-height: 1.45;
+}
+
+.guide-stage-principle p + p {
+  margin-top: 0.75rem;
+}
+
+.guide-promise {
+  background:
+    linear-gradient(112deg, rgb(255 253 248 / 0.58), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0, transparent 2rem, rgb(91 103 115 / 0.055) 2.05rem),
+    var(--brand-parchment);
+}
+
+.guide-promise-lines {
+  position: absolute;
+  z-index: 1;
+  top: 8%;
+  right: 4%;
+  bottom: 8%;
+  width: min(45vw, 36rem);
+  border-top: 1px solid rgb(40 81 67 / 0.12);
+  border-right: 1px solid rgb(40 81 67 / 0.12);
+  border-bottom: 1px solid rgb(184 135 47 / 0.22);
+  pointer-events: none;
+  transform: skewY(-2deg);
+}
+
+.guide-promise-list {
+  max-width: 47rem;
+  list-style: none;
+}
+
+.guide-promise-list li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 1.75rem);
+  border-bottom: 1px solid rgb(184 135 47 / 0.34);
+  padding: 1.35rem 0;
+}
+
+.guide-promise-list li:first-child {
+  border-top: 1px solid rgb(184 135 47 / 0.34);
+}
+
+.guide-promise-list span {
+  padding-top: 0.3rem;
+  color: var(--brand-evergreen);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.guide-promise-list p {
+  color: var(--brand-midnight-blue);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.7vw, 1.9rem);
+  line-height: 1.45;
+}
+
+.guide-horizon {
+  background:
+    linear-gradient(180deg, rgb(255 253 248 / 0.9), rgb(245 240 230 / 0.94) 58%, rgb(40 81 67 / 0.16)),
+    repeating-linear-gradient(90deg, transparent 0, transparent 3rem, rgb(16 36 63 / 0.03) 3.05rem);
+}
+
+.guide-horizon-light {
+  top: -23rem;
+  left: 50%;
+  width: min(84vw, 72rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(circle, rgb(184 135 47 / 0.24), transparent 69%);
+  transform: translateX(-50%);
+}
+
+.guide-horizon-path {
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  width: clamp(3rem, 12vw, 10rem);
+  height: 16rem;
+  background: linear-gradient(180deg, transparent, rgb(184 135 47 / 0.28));
+  clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+  transform: translateX(-50%);
+}
+
+.guide-horizon-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.guide-horizon-ridge-far {
+  height: 16rem;
+  background: color-mix(in srgb, var(--brand-slate-gray) 43%, var(--brand-parchment));
+  clip-path: polygon(0 100%, 0 72%, 12% 55%, 26% 75%, 41% 49%, 55% 72%, 69% 41%, 84% 68%, 100% 47%, 100% 100%);
+  opacity: 0.72;
+}
+
+.guide-horizon-ridge-near {
+  height: 9rem;
+  background: var(--brand-midnight-blue);
+  clip-path: polygon(0 100%, 0 64%, 14% 42%, 29% 72%, 44% 47%, 59% 74%, 74% 38%, 89% 67%, 100% 46%, 100% 100%);
+}
+
+.guide-closing-statement {
+  margin-inline: auto;
+  max-width: 36rem;
+  border-block: 1px solid rgb(184 135 47 / 0.48);
+  padding: clamp(1.5rem, 4vw, 2.25rem) 1rem;
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+@media (min-width: 64rem) {
+  .guide-stage-layout {
+    grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.18fr);
+  }
+
+  .guide-growth-cycle {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding-bottom: 6.5rem;
+  }
+
+  .guide-growth-step {
+    min-height: 12rem;
+  }
+
+  .guide-growth-arrow {
+    position: absolute;
+    top: 50%;
+    right: -0.75rem;
+    margin-top: 0;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+
+  .guide-growth-return {
+    position: absolute;
+    right: 0;
+    bottom: 1.5rem;
+    left: 0;
+  }
+
+  .guide-growth-return::before {
+    margin-right: 0.75rem;
+    color: var(--brand-compass-gold);
+    content: "↺";
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 63.999rem) {
+  .guide-stage-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guide-stage-study {
+    width: min(100%, 38rem);
+  }
+
+  .guide-growth-cycle {
+    max-width: 32rem;
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 3rem;
+  }
+
+  .guide-growth-return {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+  }
+
+  .guide-growth-return::before {
+    margin-bottom: 0.8rem;
+    color: var(--brand-compass-gold);
+    content: "↺";
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .guides-arrival-light {
+    top: -12rem;
+    right: -18rem;
+    width: 41rem;
+  }
+
+  .guides-arrival-compass {
+    top: 10%;
+    right: -11rem;
+    width: 23rem;
+    opacity: 0.38;
+  }
+
+  .guides-arrival-path {
+    right: -2rem;
+    opacity: 0.35;
+  }
+
+  .guides-arrival-ridge-far {
+    height: 7.5rem;
+  }
+
+  .guides-arrival-ridge-near {
+    height: 4.5rem;
+  }
+
+  .guide-definition-marks {
+    right: -10rem;
+    width: 22rem;
+    opacity: 0.42;
+  }
+
+  .guide-growth-cycle {
+    padding-inline: 1.25rem;
+  }
+
+  .guide-stage-study {
+    min-height: 17rem;
+    background-size: 3rem 3rem;
+  }
+
+  .guide-promise-lines {
+    right: -10rem;
+    width: 22rem;
+    opacity: 0.4;
+  }
+
+  .guide-promise-list li {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .guide-horizon-ridge-far {
+    height: 10rem;
+  }
+
+  .guide-horizon-ridge-near {
+    height: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-horizon-light,
+  .guide-horizon-path {
+    transform: translateX(-50%);
+  }
+}
