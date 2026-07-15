@@ -26,7 +26,8 @@ export default async function BeginPage({ searchParams }: BeginPageProps) {
     requestedPath && requestedPath in pathNames
       ? pathNames[requestedPath as keyof typeof pathNames]
       : undefined;
-  const pathValue = pathName && requestedPath ? requestedPath : "open";
+  const pathValue =
+    pathName && requestedPath ? requestedPath : "Open Expedition";
 
   return (
     <>
