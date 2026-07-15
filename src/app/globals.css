@@ -4121,3 +4121,491 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* Our Story: an expedition-journal narrative opening toward the horizon. */
+.story-arrival,
+.story-chapter,
+.story-horizon {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.story-arrival {
+  background:
+    linear-gradient(
+      105deg,
+      rgb(245 240 230 / 0.98) 0%,
+      rgb(245 240 230 / 0.94) 52%,
+      rgb(255 253 248 / 0.72) 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 1.9rem,
+      rgb(91 103 115 / 0.055) 1.95rem
+    );
+}
+
+.story-arrival-atmosphere,
+.story-horizon-atmosphere {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.story-arrival-atmosphere > span,
+.story-horizon-atmosphere > span {
+  position: absolute;
+  display: block;
+}
+
+.story-morning-light {
+  top: -23rem;
+  right: -17rem;
+  width: min(82vw, 72rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle,
+    rgb(255 253 248 / 0.98) 0%,
+    rgb(184 135 47 / 0.22) 37%,
+    transparent 69%
+  );
+}
+
+.story-compass {
+  top: 14%;
+  right: clamp(-9rem, -4vw, -2rem);
+  width: clamp(19rem, 39vw, 35rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(40 81 67 / 0.2);
+  border-radius: var(--radius-round);
+  opacity: 0.68;
+}
+
+.story-compass::before,
+.story-compass::after {
+  position: absolute;
+  content: "";
+}
+
+.story-compass::before {
+  inset: 12%;
+  border: 1px dashed rgb(184 135 47 / 0.38);
+  transform: rotate(45deg);
+}
+
+.story-compass::after {
+  inset: 31%;
+  border: 1px solid rgb(40 81 67 / 0.32);
+  border-radius: var(--radius-round);
+}
+
+.story-journal-lines {
+  top: 7%;
+  right: 2%;
+  width: min(45vw, 36rem);
+  height: 60%;
+  border-top: 1px solid rgb(16 36 63 / 0.13);
+  border-left: 1px solid rgb(16 36 63 / 0.13);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 2.1rem,
+    rgb(16 36 63 / 0.09) 2.15rem
+  );
+  clip-path: polygon(12% 0, 100% 0, 100% 86%, 87% 100%, 0 100%, 0 13%);
+  opacity: 0.42;
+  transform: rotate(-2deg);
+}
+
+.story-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.story-ridge-far {
+  height: 11rem;
+  background: color-mix(in srgb, var(--brand-slate-gray) 31%, var(--brand-parchment));
+  clip-path: polygon(0 100%, 0 70%, 12% 55%, 25% 76%, 39% 49%, 54% 73%, 69% 42%, 83% 68%, 94% 49%, 100% 61%, 100% 100%);
+  opacity: 0.62;
+}
+
+.story-ridge-near {
+  height: 6.5rem;
+  background: color-mix(in srgb, var(--brand-evergreen) 78%, var(--brand-midnight-blue));
+  clip-path: polygon(0 100%, 0 66%, 15% 43%, 30% 72%, 45% 47%, 60% 75%, 75% 39%, 89% 66%, 100% 46%, 100% 100%);
+}
+
+.story-opening-question {
+  border-left: 2px solid var(--brand-compass-gold);
+  padding: 0.35rem 0 0.35rem clamp(1.15rem, 3vw, 2rem);
+  color: var(--brand-midnight-blue);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  line-height: 1.55;
+}
+
+.story-field-label {
+  color: var(--story-accent, var(--brand-evergreen));
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.story-page-heading {
+  max-width: 13ch;
+  color: var(--story-ink, var(--brand-midnight-blue));
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.75rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.story-chapter {
+  --story-ink: var(--semantic-text-primary);
+  --story-muted: var(--semantic-text-muted);
+  --story-accent: var(--brand-evergreen);
+  background: var(--brand-parchment);
+}
+
+.story-chapter-parchment {
+  background:
+    linear-gradient(112deg, rgb(255 253 248 / 0.58), transparent 57%),
+    repeating-linear-gradient(90deg, transparent 0, transparent 2.5rem, rgb(16 36 63 / 0.025) 2.55rem),
+    var(--brand-parchment);
+}
+
+.story-chapter-morning {
+  background:
+    radial-gradient(circle at 14% 44%, rgb(184 135 47 / 0.17), transparent 30rem),
+    linear-gradient(110deg, rgb(255 253 248 / 0.7), transparent 62%),
+    color-mix(in srgb, var(--brand-compass-gold) 8%, var(--brand-parchment));
+}
+
+.story-chapter-midnight {
+  --story-ink: var(--brand-parchment);
+  --story-muted: rgb(245 240 230 / 0.77);
+  --story-accent: var(--brand-compass-gold);
+  background:
+    linear-gradient(125deg, rgb(16 36 63 / 0.99), rgb(31 63 57 / 0.98)),
+    repeating-linear-gradient(0deg, transparent 0, transparent 2rem, rgb(245 240 230 / 0.025) 2.05rem);
+}
+
+.story-chapter + .story-chapter {
+  border-top: 1px solid rgb(184 135 47 / 0.22);
+}
+
+.story-chapter-marks {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  color: var(--story-accent);
+  pointer-events: none;
+}
+
+.story-chapter-rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: max(1rem, calc((100% - 80rem) / 2));
+  width: 1px;
+  background: linear-gradient(transparent, currentColor 18%, currentColor 82%, transparent);
+  opacity: 0.22;
+}
+
+.story-chapter-bearing {
+  position: absolute;
+  top: 50%;
+  right: clamp(-10rem, -4vw, -3rem);
+  width: clamp(16rem, 28vw, 26rem);
+  aspect-ratio: 1;
+  border: 1px dashed currentColor;
+  border-radius: var(--radius-round);
+  opacity: 0.13;
+  transform: translateY(-50%);
+}
+
+.story-chapter-bearing::before,
+.story-chapter-bearing::after {
+  position: absolute;
+  content: "";
+}
+
+.story-chapter-bearing::before {
+  inset: 19%;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.story-chapter-bearing::after {
+  top: 50%;
+  right: -12%;
+  left: -12%;
+  height: 1px;
+  background: currentColor;
+}
+
+.story-chapter-number {
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 600;
+  line-height: 1;
+  opacity: 0.065;
+}
+
+.story-chapter-layout {
+  display: grid;
+  gap: clamp(3rem, 8vw, 7rem);
+}
+
+.story-chapter-copy {
+  max-width: 47rem;
+  color: var(--story-muted);
+}
+
+.story-chapter-body {
+  font-size: 1.0625rem;
+  line-height: 2rem;
+}
+
+.story-chapter-body > * + * {
+  margin-top: 1.2rem;
+}
+
+.story-short-lines p + p {
+  margin-top: 0.45rem;
+}
+
+.story-copy-emphasis {
+  color: var(--story-ink);
+  font-weight: 650;
+}
+
+.story-chapter-quotation {
+  margin-top: clamp(2.25rem, 5vw, 3.75rem);
+  border-left: 2px solid var(--brand-compass-gold);
+  padding: 0.5rem 0 0.5rem clamp(1.25rem, 3vw, 2rem);
+  color: var(--story-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  line-height: 1.5;
+}
+
+.story-chapter-quotation p + p {
+  margin-top: 0.6rem;
+}
+
+.story-quotation-answer {
+  color: var(--story-accent);
+  font-weight: 600;
+}
+
+.story-chapter-quotation + a,
+.story-chapter-body + a {
+  margin-top: 2rem;
+}
+
+.story-link-inverse {
+  color: var(--brand-parchment);
+}
+
+.story-link-inverse:hover {
+  color: var(--brand-compass-gold);
+}
+
+.story-measures {
+  display: grid;
+  gap: 0.7rem;
+  border-block: 1px solid rgb(184 135 47 / 0.42);
+  padding-block: 1.5rem;
+  color: var(--brand-parchment);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.3vw, 1.65rem);
+  line-height: 1.45;
+}
+
+.story-guide-actions {
+  border-left: 1px solid rgb(184 135 47 / 0.4);
+  padding-left: clamp(1.1rem, 3vw, 1.75rem);
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.story-hearth-principles {
+  border-block: 1px solid rgb(184 135 47 / 0.43);
+  padding-block: 1.35rem;
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.7vw, 1.9rem);
+  line-height: 1.45;
+}
+
+.story-hearth-principles p + p {
+  margin-top: 0.5rem;
+}
+
+.story-books-companions {
+  color: var(--brand-compass-gold);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3.5vw, 2.35rem);
+  line-height: 1.35;
+}
+
+.story-books-companions p + p {
+  margin-top: 0.25rem;
+  color: var(--brand-parchment);
+}
+
+.story-horizon {
+  background:
+    linear-gradient(180deg, rgb(255 253 248 / 0.9), rgb(245 240 230 / 0.94) 58%, rgb(40 81 67 / 0.16)),
+    repeating-linear-gradient(90deg, transparent 0, transparent 3rem, rgb(16 36 63 / 0.03) 3.05rem);
+}
+
+.story-horizon-light {
+  top: -23rem;
+  left: 50%;
+  width: min(84vw, 72rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-round);
+  background: radial-gradient(circle, rgb(184 135 47 / 0.24), transparent 69%);
+  transform: translateX(-50%);
+}
+
+.story-path {
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  width: clamp(3rem, 12vw, 10rem);
+  height: 16rem;
+  background: linear-gradient(180deg, transparent, rgb(184 135 47 / 0.28));
+  clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+  transform: translateX(-50%);
+}
+
+.story-horizon-ridge {
+  right: -3%;
+  bottom: -1px;
+  left: -3%;
+}
+
+.story-horizon-ridge-far {
+  height: 16rem;
+  background: color-mix(in srgb, var(--brand-slate-gray) 43%, var(--brand-parchment));
+  clip-path: polygon(0 100%, 0 72%, 12% 55%, 26% 75%, 41% 49%, 55% 72%, 69% 41%, 84% 68%, 100% 47%, 100% 100%);
+  opacity: 0.72;
+}
+
+.story-horizon-ridge-near {
+  height: 9rem;
+  background: var(--brand-midnight-blue);
+  clip-path: polygon(0 100%, 0 64%, 14% 42%, 29% 72%, 44% 47%, 59% 74%, 74% 38%, 89% 67%, 100% 46%, 100% 100%);
+}
+
+.story-closing-statement {
+  margin-inline: auto;
+  max-width: 36rem;
+  border-block: 1px solid rgb(184 135 47 / 0.48);
+  padding: clamp(1.5rem, 4vw, 2.25rem) 1rem;
+  color: var(--brand-evergreen);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+@media (min-width: 64rem) {
+  .story-chapter-layout {
+    grid-template-columns: minmax(16rem, 0.73fr) minmax(0, 1.27fr);
+  }
+
+  .story-chapter:nth-of-type(even) .story-chapter-layout {
+    grid-template-columns: minmax(0, 1.27fr) minmax(16rem, 0.73fr);
+  }
+
+  .story-chapter:nth-of-type(even) header {
+    grid-column: 2;
+  }
+
+  .story-chapter:nth-of-type(even) .story-chapter-copy {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 63.999rem) {
+  .story-chapter-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .story-journal-lines {
+    right: -8rem;
+    width: 31rem;
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .story-morning-light {
+    top: -12rem;
+    right: -18rem;
+    width: 41rem;
+  }
+
+  .story-compass {
+    top: 10%;
+    right: -11rem;
+    width: 23rem;
+    opacity: 0.38;
+  }
+
+  .story-journal-lines {
+    right: -14rem;
+    opacity: 0.18;
+  }
+
+  .story-ridge-far {
+    height: 7.5rem;
+  }
+
+  .story-ridge-near {
+    height: 4.5rem;
+  }
+
+  .story-chapter-bearing {
+    right: -11rem;
+    width: 20rem;
+  }
+
+  .story-chapter-number {
+    top: 4%;
+    right: 1rem;
+  }
+
+  .story-horizon-ridge-far {
+    height: 10rem;
+  }
+
+  .story-horizon-ridge-near {
+    height: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-horizon-light,
+  .story-path {
+    transform: translateX(-50%);
+  }
+}
