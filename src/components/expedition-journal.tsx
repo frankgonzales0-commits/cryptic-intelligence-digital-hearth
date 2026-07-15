@@ -4,7 +4,20 @@ import type { FormEvent } from "react";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const formId = "traveler-journal";
+const formName = "traveler-journal";
+const formSubmissionDestination = "/netlify-forms.html";
+
+type SubmissionDiagnostic = {
+  destination: string;
+  netlifySuccess: boolean;
+  status: number | "network-error";
+};
+
+function reportSubmissionDiagnostic(diagnostic: SubmissionDiagnostic) {
+  if (process.env.NODE_ENV === "development") {
+    console.info("Traveler's Journal Netlify submission", diagnostic);
+  }
+}
 
 type ExpeditionJournalProps = {
   pathName?: string;
@@ -39,17 +52,28 @@ export function ExpeditionJournal({
     const formData = new FormData(form);
     const encodedData = new URLSearchParams();
 
+    formData.set("form-name", formName);
+
     formData.forEach((value, key) => {
       if (typeof value === "string") {
         encodedData.append(key, value);
       }
     });
 
+    let responseReceived = false;
+
     try {
-      const response = await fetch("/", {
+      const response = await fetch(formSubmissionDestination, {
         body: encodedData.toString(),
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         method: "POST",
+      });
+      responseReceived = true;
+
+      reportSubmissionDiagnostic({
+        destination: formSubmissionDestination,
+        netlifySuccess: response.ok,
+        status: response.status,
       });
 
       if (!response.ok) {
@@ -58,6 +82,13 @@ export function ExpeditionJournal({
 
       router.push("/journal-received");
     } catch {
+      if (!responseReceived) {
+        reportSubmissionDiagnostic({
+          destination: formSubmissionDestination,
+          netlifySuccess: false,
+          status: "network-error",
+        });
+      }
       submissionInProgress.current = false;
       setIsSubmitting(false);
       setErrorMessage(
@@ -78,12 +109,12 @@ export function ExpeditionJournal({
       className="expedition-journal"
       data-netlify="true"
       data-netlify-honeypot="company-website"
-      id={formId}
+      id={formName}
       method="POST"
-      name="traveler-journal"
+      name={formName}
       onSubmit={handleSubmit}
     >
-      <input name="form-name" type="hidden" value="traveler-journal" />
+      <input name="form-name" type="hidden" value={formName} />
       <input name="expedition-path" type="hidden" value={pathValue} />
       <p aria-hidden="true" className="expedition-journal-honeypot">
         <label htmlFor="company-website">Leave this field empty</label>
