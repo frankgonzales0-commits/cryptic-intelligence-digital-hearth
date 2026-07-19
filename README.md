@@ -1,69 +1,171 @@
-# Cryptic Intelligence Digital Hearth
+# 🧭 Cryptic Intelligence | The Digital Hearth
 
-Phase One technical foundation for the official Cryptic Intelligence website.
-This project intentionally contains structural placeholder content rather than
-the finished homepage or final marketing copy.
+> **OpenAI Build Week 2026 Submission**\
+> A demonstration of sustained human-AI collaboration through publishing, software development, design, and storytelling.
 
-## Technology
+> *Where wisdom guides every expedition.*
 
-- Next.js with the App Router
-- TypeScript
-- Tailwind CSS
-- ESLint
-- pnpm
-- Static-first page architecture
-- Netlify-compatible build configuration
+Cryptic Intelligence is a learning ecosystem dedicated to helping people navigate life's expeditions through wisdom, technology, and one another.
 
-## Local development
+Created during **OpenAI Build Week 2026**, this project explores what becomes possible when human creativity and artificial intelligence work together as collaborative partners. Rather than building another AI application, the goal was to create a digital Hearth: a welcoming place where people can learn, reflect, and continue their own journeys.
 
-Requirements: Node.js 20.9 or newer and pnpm.
+**Live website:** [crypticintelligenceconsulting.com](https://crypticintelligenceconsulting.com)
+
+---
+
+## 🌲 Vision
+
+Every person is on an expedition.
+
+Some are building businesses.\
+Some are changing careers.\
+Some are searching for purpose.\
+Some are simply looking for a path forward.
+
+No one should have to navigate those journeys alone.
+
+Cryptic Intelligence exists to provide guidance through thoughtful technology, lifelong learning, and a community centered on curiosity rather than algorithms.
+
+---
+
+## ✨ Features
+
+- 📚 A growing library of original publications
+- 🌐 A responsive website built with modern web technologies
+- 🎨 A cohesive visual identity inspired by the Appalachian wilderness
+- 🧭 Expedition-focused storytelling and navigation
+- ♿ Accessibility-conscious design
+- 📱 Responsive layouts for desktop and mobile
+- 🚀 Production deployment through Netlify
+
+---
+
+## 🛠 Technology Stack
+
+- [Next.js 16](https://nextjs.org/) with the App Router
+- [React 19](https://react.dev/)
+- [TypeScript 5](https://www.typescriptlang.org/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [pnpm 11](https://pnpm.io/)
+- [GitHub](https://github.com/) for source control
+- [Netlify](https://www.netlify.com/) for production deployment
+
+---
+
+## 🤖 How GPT-5.6 and Codex Were Used
+
+This project was built through extensive collaboration with OpenAI's GPT-5.6 and Codex.
+
+### GPT-5.6
+
+GPT-5.6 served as a strategic and creative collaborator by helping to:
+
+- Develop the philosophy and identity of Cryptic Intelligence
+- Refine the website's information architecture
+- Write and edit website content
+- Review accessibility and user experience
+- Shape branding, storytelling, and visual direction
+- Troubleshoot technical challenges
+- Assist with publications, documentation, marketing, and project planning
+- Guide the production of the Build Week film and submission materials
+
+### Codex
+
+Codex served as a software engineering partner by helping to:
+
+- Build and refine Next.js components
+- Implement responsive layouts
+- Improve accessibility
+- Refactor code
+- Diagnose and resolve bugs
+- Support deployment through GitHub and Netlify
+- Review implementation details
+- Produce and revise production-ready React and TypeScript code
+
+GPT-5.6 and Codex did not replace human creativity or decision-making. They acted as collaborative Guides, helping transform questions into skills, ideas into artifacts, and a vision into a working public project.
+
+---
+
+## 🚀 Running Locally
+
+### Prerequisites
+
+- Node.js 22.13 or newer
+- pnpm 11.7
+
+Clone the repository:
+
+```bash
+git clone https://github.com/frankgonzales0-commits/cryptic-intelligence-digital-hearth.git
+cd cryptic-intelligence-digital-hearth
+```
+
+Install dependencies:
 
 ```bash
 pnpm install
+```
+
+Start the development server:
+
+```bash
 pnpm dev
 ```
 
-Open `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000) in a browser.
 
-For local metadata URLs, copy `.env.example` to `.env.local`. Keep
-`NEXT_PUBLIC_SITE_ENV=preview` until a production release is approved.
+---
 
-## Quality checks
+## ✅ Validation
+
+Run the repository's quality checks:
 
 ```bash
 pnpm lint
+pnpm exec tsc --noEmit
 pnpm build
 ```
 
-## GitHub connection
-
-Create a new, empty GitHub repository. Do not initialize it with a README or
-license. Then run:
+The production build can be served locally after a successful build:
 
 ```bash
-git add .
-git commit -m "Establish Digital Hearth foundation"
-git remote add origin https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
-git push -u origin main
+pnpm start
 ```
 
-Replace the example repository URL with the new GitHub repository URL.
+---
 
-## Separate Netlify preview project
+## 🔥 Build Week Context
 
-To avoid replacing the existing live site:
+The Digital Hearth was created as an OpenAI Build Week 2026 submission and as the public foundation for Cryptic Intelligence. The work extended beyond a single prototype: the collaboration included product philosophy, information architecture, accessible interface design, original publications, engineering, deployment, launch storytelling, and production planning.
 
-1. In Netlify, choose **Add new project** and **Import an existing project**.
-2. Connect the new GitHub repository created for this project.
-3. Create a brand-new Netlify project; do not link this repository to the
-   existing production site.
-4. Confirm the build command is `pnpm build` and the publish directory is
-   `.next`. Netlify should detect Next.js automatically.
-5. Add `NEXT_PUBLIC_SITE_URL` with the new preview project's Netlify URL.
-6. Keep `NEXT_PUBLIC_SITE_ENV` set to `preview` so search engines are asked not
-   to index the foundation.
-7. Do not attach the existing production domain.
+The project demonstrates a sustained working relationship between a human creator and AI collaborators. Each phase began with human intent, developed through conversation and iteration, and concluded with review, validation, and a deliberate decision about what belonged in the Hearth.
 
-Netlify Deploy Previews can then be enabled for pull requests in **Project
-configuration → Build & deploy → Continuous Deployment → Branches and deploy
-contexts**.
+---
+
+## 🧭 Project Philosophy
+
+- Wisdom before technology
+- Invitation over persuasion
+- Curiosity before certainty
+- Stewardship before ownership
+- Accessibility is hospitality
+- Technology should support human judgment rather than replace it
+- A Guide does not choose another traveler's summit
+
+The Digital Hearth is designed to welcome travelers without pressure, help them reflect without prescribing an answer, and offer useful tools for whatever expedition lies ahead.
+
+---
+
+## 🙏 Acknowledgments
+
+The Digital Hearth is the result of a hybrid creative practice.
+
+**Human direction:** Raul Gonzales, First Guide, shaped the vision, philosophy, editorial judgment, visual standards, and final decisions that define Cryptic Intelligence.
+
+**AI collaboration:** OpenAI's GPT-5.6 and Codex contributed strategic exploration, writing support, design reasoning, software engineering, debugging, review, and production assistance throughout Build Week.
+
+The project honors both sides of that collaboration: human purpose and responsibility, strengthened by artificial intelligence used with curiosity, care, and discernment.
+
+---
+
+Built with care beside the Hearth.
