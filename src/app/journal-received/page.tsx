@@ -1,12 +1,20 @@
+import type { Metadata } from "next";
+
 import { SectionContainer } from "@/components/section-container";
 import { ButtonLink } from "@/components/ui/button";
 import { TextLink } from "@/components/ui/text-link";
 import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = createPageMetadata(
-  "Journal Received",
-  "Your Traveler's Journal has been safely delivered to the Digital Hearth.",
-);
+export const metadata: Metadata = {
+  ...createPageMetadata(
+    "Journal Received",
+    "Your Traveler's Journal has been safely delivered to the Digital Hearth.",
+  ),
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function JournalReceivedPage() {
   return (

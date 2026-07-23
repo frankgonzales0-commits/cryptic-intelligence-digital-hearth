@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   robots: {
-    index: process.env.NEXT_PUBLIC_SITE_ENV === "production",
-    follow: process.env.NEXT_PUBLIC_SITE_ENV === "production",
+    index: true,
+    follow: true,
   },
 };
 
